@@ -1,14 +1,13 @@
 import "./App.css";
-import Box from "./Box";
+import MacedoniaMap from "./pages/MacedoniaMap";
 
 export function App() {
   return (
-    <div className="bg-white">
-      <div className="text-bold bg-red-100 pb-2">Mak Stats</div>
-      <div className="flex">
-        <Box shadow="shadow-md" />
-        <Box shadow="shadow-xl" />
-        <Box shadow="shadow-lg" />
+    <div className="margin-auto bg-white">
+      <div className="text-bold pb-2">Mak Stats</div>
+
+      <div className="margin-auto jc-center flex text-center">
+        <MacedoniaMap />
       </div>
     </div>
   );
