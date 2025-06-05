@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Bird, Home, Settings, UsersRound, Vegan } from "lucide-react";
 
 import { Link } from "react-router-dom";
 
@@ -24,17 +24,17 @@ export default function SidebarNavigation() {
     {
       title: "Population",
       url: "/population",
-      icon: Inbox,
+      icon: UsersRound,
     },
     {
       title: "Livestock",
       url: "/livestock",
-      icon: Calendar,
+      icon: Bird,
     },
     {
-      title: "Search",
-      url: "#",
-      icon: Search,
+      title: "Pelagonia",
+      url: "/pelagonia",
+      icon: Vegan,
     },
     {
       title: "Settings",

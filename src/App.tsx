@@ -7,6 +7,7 @@ import MacedoniaMap from "./pages/MacedoniaMap";
 import HomePage from "./pages/HomePage";
 import SidebarNavigation from "./components/SidebarNavigation";
 import { SidebarProvider } from "./components/ui/sidebar";
+import Livestock from "./pages/Livestock";
 export function App() {
   return (
     <Router>
@@ -17,7 +18,8 @@ export function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/population" element={<MacedoniaMap />} />
-              <Route path="/livestock" element={<PelagoniaMap />} />
+              <Route path="/pelagonia" element={<PelagoniaMap />} />
+              <Route path="/livestock" element={<Livestock />} />
             </Routes>
           </div>
         </div>
