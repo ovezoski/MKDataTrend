@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Bird, Home, Settings, UsersRound, Vegan } from "lucide-react";
+import { Bird, Home, Settings, UsersRound, Vegan, Banknote } from "lucide-react";
 
 import { Link } from "react-router-dom";
 
@@ -35,6 +35,11 @@ export default function SidebarNavigation() {
       title: "Pelagonia",
       url: "/pelagonia",
       icon: Vegan,
+    },
+        {
+      title: "Neto Salary",
+      url: "/salary",
+      icon: Banknote,
     },
     {
       title: "Settings",
