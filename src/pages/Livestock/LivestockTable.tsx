@@ -26,7 +26,7 @@ import {
 } from "@tanstack/react-table";
 import { ChevronDown, ChevronsUpDown, ChevronUp } from "lucide-react";
 
-export default function Livestock() {
+export default function LivestockTable() {
   const [tableData, setTableData] = useState<LivestockDataRow[]>([]);
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>([]);
   const [sorting, setSorting] = useState<SortingState>([

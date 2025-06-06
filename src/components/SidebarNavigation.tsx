@@ -39,11 +39,6 @@ export default function SidebarNavigation() {
       icon: Bird,
     },
     {
-      title: "Livestock S",
-      url: "/livestock/sankey",
-      icon: Bird,
-    },
-    {
       title: "Pelagonia",
       url: "/pelagonia",
       icon: Vegan,

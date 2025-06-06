@@ -6,14 +6,6 @@ import {
 import { useEffect, useState, useRef, useMemo } from "react";
 import * as d3 from "d3";
 import { sankey, sankeyLinkHorizontal } from "d3-sankey";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 interface SankeyNode {
   id: number;
@@ -217,36 +209,27 @@ export default function LivestockSankey() {
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Livestock Flow by Region and Type</CardTitle>
-          <CardDescription></CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="mb-4">
-            <label htmlFor="year-select" className="mr-2 font-medium">
-              Select Year:
-            </label>
-            <select
-              id="year-select"
-              value={selectedYear || ""}
-              onChange={(e) => setSelectedYear(e.target.value)}
-              className="rounded-md border p-2"
-            >
-              {availableYears.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
-          </div>
+      <div className="mb-4">
+        <label htmlFor="year-select" className="mr-2 font-medium">
+          Select Year:
+        </label>
+        <select
+          id="year-select"
+          value={selectedYear || ""}
+          onChange={(e) => setSelectedYear(e.target.value)}
+          className="rounded-md border p-2"
+        >
+          {availableYears.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </div>
 
-          <div>
-            <svg ref={svgRef}></svg>
-          </div>
-        </CardContent>
-        <CardFooter></CardFooter>
-      </Card>
+      <div>
+        <svg ref={svgRef}></svg>
+      </div>
     </div>
   );
 }
