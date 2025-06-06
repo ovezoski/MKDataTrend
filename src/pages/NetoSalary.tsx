@@ -10,6 +10,7 @@ interface DataItem {
 export const NetoSalary = () => {
   const [data, setData] = useState<DataItem[]>([]);
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     fetchNetoPlata().then((json) => {
@@ -30,53 +31,141 @@ export const NetoSalary = () => {
     if (data.length === 0) return;
 
     const svg = d3.select(svgRef.current);
-    const width = 1000;
-    const height = 600; 
-    const margin = { top: 20, right: 30, bottom: 200, left: 60 }; 
+    const width = 1200;
+    const height = 650;
+    const margin = { top: 40, right: 30, bottom: 250, left: 100 };
 
     svg.selectAll("*").remove();
 
+    const defs = svg.append("defs");
+    const linearGradient = defs.append("linearGradient")
+      .attr("id", "barGradient")
+      .attr("x1", "0%")
+      .attr("y1", "0%")
+      .attr("x2", "0%")
+      .attr("y2", "100%");
+    linearGradient.append("stop")
+      .attr("offset", "0%")
+      .attr("stop-color", "#6a11cb");
+    linearGradient.append("stop")
+      .attr("offset", "100%")
+      .attr("stop-color", "#2575fc");
+
     const x = d3
-      .scaleBand()
+      .scaleBand<string>()
       .domain(data.map((d) => d.sector))
       .range([margin.left, width - margin.right])
-      .padding(0.2);
+      .padding(0.3);
 
     const y = d3
-      .scaleLinear()
-      .domain([0, d3.max(data, (d) => d.salary)!])
+      .scaleLinear<number, number>()
+      .domain([0, d3.max(data, (d) => d.salary)! * 1.1])
       .nice()
       .range([height - margin.bottom, margin.top]);
+
 
     svg
       .append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)
       .call(d3.axisBottom(x))
       .selectAll("text")
-      .attr("transform", "rotate(-65)") 
+      .attr("transform", "rotate(-60)")
       .style("text-anchor", "end")
-      .style("font-size", "11px"); 
+      .style("font-size", "12px")
+      .style("fill", "#333")
+      .style("font-family", "sans-serif");
+
 
     svg
       .append("g")
       .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y).tickFormat(d3.format(".2s")))
+      .style("font-size", "12px")
+      .style("fill", "#333")
+      .style("font-family", "sans-serif");
+
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", margin.left / 2 - 20)
+      .attr("x", -(height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .style("font-size", "14px")
+      .style("fill", "#555")
+      .style("font-family", "sans-serif")
+      .text("Нето плата");
 
     svg
-      .selectAll("rect")
+      .selectAll(".bar")
       .data(data)
       .join("rect")
-      .attr("x", (d) => x(d.sector)!)
-      .attr("y", (d) => y(d.salary))
+      .attr("class", "bar")
+      .attr("x", (d: DataItem) => x(d.sector)!)
       .attr("width", x.bandwidth())
-      .attr("height", (d) => height - margin.bottom - y(d.salary))
-      .attr("fill", "red");
+      .attr("fill", "url(#barGradient)")
+      .attr("y", height - margin.bottom)
+      .attr("height", 0)
+      .transition()
+      .duration(800)
+      .delay((d: DataItem, i: number) => i * 50)
+      .attr("y", (d: DataItem) => y(d.salary))
+      .attr("height", (d: DataItem) => height - margin.bottom - y(d.salary));
+
+    const tooltip = d3.select(tooltipRef.current)
+      .style("opacity", 0)
+      .style("position", "absolute")
+      .style("background-color", "rgba(0,0,0,0.7)")
+      .style("color", "white")
+      .style("padding", "8px")
+      .style("border-radius", "4px")
+      .style("pointer-events", "none");
+
+    svg.selectAll<SVGRectElement, DataItem>(".bar")
+      .on("mouseover", function (event: MouseEvent, d: DataItem) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .attr("fill", "#ff7f0e")
+          .attr("y", y(d.salary) - 5)
+          .attr("height", height - margin.bottom - y(d.salary) + 5);
+
+        tooltip.html(`Sector: <strong>${d.sector}</strong><br/>Salary: <strong>${d.salary.toLocaleString()} MKD</strong>`)
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 28) + "px")
+          .transition()
+          .duration(200)
+          .style("opacity", 1);
+      })
+      .on("mousemove", function (event: MouseEvent) {
+        tooltip.style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 28) + "px");
+      })
+      .on("mouseout", function (event: MouseEvent, d: DataItem) {
+        d3.select(this)
+          .transition()
+          .duration(200)
+          .attr("fill", "url(#barGradient)")
+          .attr("y", y(d.salary))
+          .attr("height", height - margin.bottom - y(d.salary));
+
+        tooltip.transition()
+          .duration(300)
+          .style("opacity", 0);
+      });
+
   }, [data]);
 
   return (
-    <div>
-      <h2>Нето плата по сектори</h2>
-      <svg ref={svgRef} width={1000} height={600}></svg>
+    <div className="flex flex-col items-center justify-center min-h-screen rounded-2xl bg-amber-50 p-4">
+      <h1 className="text-4xl font-extrabold text-gray-800 mb-8 tracking-tight">
+        Нето плата по сектори
+      </h1>
+
+      <div className="bg-white p-6 rounded-lg shadow-2xl">
+        <svg ref={svgRef} width={1200} height={800}></svg>
+      </div>
+
+      <div ref={tooltipRef} />
     </div>
   );
 };
