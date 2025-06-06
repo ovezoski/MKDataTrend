@@ -9,6 +9,7 @@ import SidebarNavigation from "./components/SidebarNavigation";
 import { SidebarProvider } from "./components/ui/sidebar";
 import Livestock from "./pages/Livestock";
 import { NetoSalary } from "./pages/NetoSalary";
+import LivestockSankey from "./pages/LivestockSankey";
 export function App() {
   return (
     <Router>
@@ -25,6 +26,7 @@ export function App() {
                 <Route path="/population" element={<MacedoniaMap />} />
                 <Route path="/pelagonia" element={<PelagoniaMap />} />
                 <Route path="/livestock" element={<Livestock />} />
+                <Route path="/livestock/sankey" element={<LivestockSankey />} />
                 <Route path="/salary" element={<NetoSalary />} />
               </Routes>
             </div>
