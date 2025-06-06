@@ -25,6 +25,14 @@ export async function fetchCommodityExchange() {
           values: ["3"],
         },
       },
+    
+      {
+        code: "Вид на трговија",
+        selection: {
+          filter: "item",
+          values: ["R", "S"],
+        },
+      },
     ],
     response: {
       format: "json-stat2",
