@@ -17,6 +17,7 @@ import {
   UsersRound,
   Vegan,
   Banknote,
+  ArrowLeftRight,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -47,6 +48,11 @@ export default function SidebarNavigation() {
       title: "Neto Salary",
       url: "/salary",
       icon: Banknote,
+    },
+        {
+      title: "Commodity Exchange",
+      url: "/commodity",
+      icon: ArrowLeftRight,
     },
     {
       title: "Settings",

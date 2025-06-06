@@ -156,7 +156,7 @@ export const NetoSalary = () => {
   }, [data]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen rounded-2xl bg-amber-50 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen rounded-2xl bg-amber-50 p-4 max-w-7xl mx-auto">
       <h1 className="text-4xl font-extrabold text-gray-800 mb-8 tracking-tight">
         Нето плата по сектори
       </h1>

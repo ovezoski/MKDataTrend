@@ -10,6 +10,7 @@ import { SidebarProvider } from "./components/ui/sidebar";
 import { NetoSalary } from "./pages/NetoSalary";
 import LivestockSankey from "./pages/Livestock/LivestockSankey";
 import Livestock from "./pages/Livestock/Livestock";
+import CommodityExchangeChart from "./pages/CommodityExchange";
 export function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ export function App() {
                 <Route path="/pelagonia" element={<PelagoniaMap />} />
                 <Route path="/livestock" element={<Livestock />} />
                 <Route path="/salary" element={<NetoSalary />} />
+                <Route path ="/commodity" element={<CommodityExchangeChart />} />
               </Routes>
             </div>
           </div>
