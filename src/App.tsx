@@ -12,20 +12,25 @@ import { NetoSalary } from "./pages/NetoSalary";
 export function App() {
   return (
     <Router>
-      <SidebarProvider>
-        <SidebarNavigation />
-        <div className="margin-auto flex w-full justify-center">
-          <div className="p-1">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/population" element={<MacedoniaMap />} />
-              <Route path="/pelagonia" element={<PelagoniaMap />} />
-              <Route path="/livestock" element={<Livestock />} />
-              <Route path="/salary" element={<NetoSalary />} />
-            </Routes>
+      <div>
+        <SidebarProvider>
+          <SidebarNavigation />
+          <div className="w-full">
+            <div className="m-2 ml-0 rounded-md bg-white p-3">
+              <h2>Mak Stats</h2>
+            </div>
+            <div className="">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/population" element={<MacedoniaMap />} />
+                <Route path="/pelagonia" element={<PelagoniaMap />} />
+                <Route path="/livestock" element={<Livestock />} />
+                <Route path="/salary" element={<NetoSalary />} />
+              </Routes>
+            </div>
           </div>
-        </div>
-      </SidebarProvider>
+        </SidebarProvider>
+      </div>
     </Router>
   );
 }
