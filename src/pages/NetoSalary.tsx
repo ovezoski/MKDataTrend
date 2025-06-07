@@ -31,23 +31,26 @@ export const NetoSalary = () => {
     if (data.length === 0) return;
 
     const svg = d3.select(svgRef.current);
-    const width = 1200;
-    const height = 650;
+    const width = 900;
+    const height = 550;
     const margin = { top: 40, right: 30, bottom: 250, left: 100 };
 
     svg.selectAll("*").remove();
 
     const defs = svg.append("defs");
-    const linearGradient = defs.append("linearGradient")
+    const linearGradient = defs
+      .append("linearGradient")
       .attr("id", "barGradient")
       .attr("x1", "0%")
       .attr("y1", "0%")
       .attr("x2", "0%")
       .attr("y2", "100%");
-    linearGradient.append("stop")
+    linearGradient
+      .append("stop")
       .attr("offset", "0%")
       .attr("stop-color", "#6a11cb");
-    linearGradient.append("stop")
+    linearGradient
+      .append("stop")
       .attr("offset", "100%")
       .attr("stop-color", "#2575fc");
 
@@ -63,7 +66,6 @@ export const NetoSalary = () => {
       .nice()
       .range([height - margin.bottom, margin.top]);
 
-
     svg
       .append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)
@@ -75,7 +77,6 @@ export const NetoSalary = () => {
       .style("fill", "#333")
       .style("font-family", "sans-serif");
 
-
     svg
       .append("g")
       .attr("transform", `translate(${margin.left},0)`)
@@ -84,7 +85,8 @@ export const NetoSalary = () => {
       .style("fill", "#333")
       .style("font-family", "sans-serif");
 
-    svg.append("text")
+    svg
+      .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", margin.left / 2 - 20)
       .attr("x", -(height / 2))
@@ -111,7 +113,8 @@ export const NetoSalary = () => {
       .attr("y", (d: DataItem) => y(d.salary))
       .attr("height", (d: DataItem) => height - margin.bottom - y(d.salary));
 
-    const tooltip = d3.select(tooltipRef.current)
+    const tooltip = d3
+      .select(tooltipRef.current)
       .style("opacity", 0)
       .style("position", "absolute")
       .style("background-color", "rgba(0,0,0,0.7)")
@@ -120,7 +123,8 @@ export const NetoSalary = () => {
       .style("border-radius", "4px")
       .style("pointer-events", "none");
 
-    svg.selectAll<SVGRectElement, DataItem>(".bar")
+    svg
+      .selectAll<SVGRectElement, DataItem>(".bar")
       .on("mouseover", function (event: MouseEvent, d: DataItem) {
         d3.select(this)
           .transition()
@@ -129,16 +133,20 @@ export const NetoSalary = () => {
           .attr("y", y(d.salary) - 5)
           .attr("height", height - margin.bottom - y(d.salary) + 5);
 
-        tooltip.html(`Sector: <strong>${d.sector}</strong><br/>Salary: <strong>${d.salary.toLocaleString()} MKD</strong>`)
-          .style("left", (event.pageX + 10) + "px")
-          .style("top", (event.pageY - 28) + "px")
+        tooltip
+          .html(
+            `Sector: <strong>${d.sector}</strong><br/>Salary: <strong>${d.salary.toLocaleString()} MKD</strong>`,
+          )
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY - 28 + "px")
           .transition()
           .duration(200)
           .style("opacity", 1);
       })
       .on("mousemove", function (event: MouseEvent) {
-        tooltip.style("left", (event.pageX + 10) + "px")
-          .style("top", (event.pageY - 28) + "px");
+        tooltip
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY - 28 + "px");
       })
       .on("mouseout", function (event: MouseEvent, d: DataItem) {
         d3.select(this)
@@ -148,21 +156,18 @@ export const NetoSalary = () => {
           .attr("y", y(d.salary))
           .attr("height", height - margin.bottom - y(d.salary));
 
-        tooltip.transition()
-          .duration(300)
-          .style("opacity", 0);
+        tooltip.transition().duration(300).style("opacity", 0);
       });
-
   }, [data]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen rounded-2xl bg-amber-50 p-4 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-8 tracking-tight">
+    <div className="mx-auto my-3 flex min-h-screen max-w-7xl flex-col items-center justify-center rounded-lg bg-white p-4">
+      <h1 className="m-1 text-3xl font-extrabold text-gray-800">
         Нето плата по сектори
       </h1>
 
-      <div className="bg-white p-6 rounded-lg shadow-2xl">
-        <svg ref={svgRef} width={1200} height={800}></svg>
+      <div className="p-2 shadow-2xl">
+        <svg ref={svgRef} width={900} height={800}></svg>
       </div>
 
       <div ref={tooltipRef} />

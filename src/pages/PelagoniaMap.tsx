@@ -3,7 +3,23 @@ import * as d3 from "d3";
 import { FeatureCollection, MultiPolygon, Polygon } from "geojson";
 import { getColor, invertCoordinates } from "../utility/functions";
 import { initialTooltipState } from "../utility/tooltip";
+function toNormalCase(name) {
+  if (typeof name !== "string" || !name) {
+    return "";
+  }
 
+  return name
+    .replace(/_/g, " ")
+    .toLowerCase()
+    .split(" ")
+    .map((word) => {
+      if (word.length === 0) {
+        return "";
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
 const PelagoniaMap = ({ width = 800, height = 600 }) => {
   const svgRef = useRef(null);
   const [geoData, setGeoData] = useState<FeatureCollection | undefined>();
@@ -42,13 +58,13 @@ const PelagoniaMap = ({ width = 800, height = 600 }) => {
     if (!geoData || !regionsData || !svgRef.current) return;
 
     const svg = d3.select(svgRef.current);
+
     svg.selectAll("*").remove();
 
     const projection = d3.geoMercator().fitSize([width, height], geoData);
 
     const pathGenerator = d3.geoPath().projection(projection);
 
-    //terain code
     svg
       .append("defs")
       .append("radialGradient")
@@ -83,9 +99,7 @@ const PelagoniaMap = ({ width = 800, height = 600 }) => {
       .append("path")
       .attr("class", "border")
       .attr("d", pathGenerator)
-      .attr("fill", "#E8E8E8")
       .attr("fill", "url(#earthTerrainRadialGradient)")
-      .attr("stroke", "#5A5A5A")
       .attr("stroke-width", 1);
 
     svg
@@ -96,6 +110,8 @@ const PelagoniaMap = ({ width = 800, height = 600 }) => {
       .append("path")
       .attr("class", "region")
       .attr("d", pathGenerator)
+      .attr("ry", "10px")
+      .attr("r", 10)
       .attr("fill", (d) => getColor(d.properties?.category))
       .attr("stroke", (d) => {
         const baseColor = getColor(d.properties?.category);
@@ -144,23 +160,15 @@ const PelagoniaMap = ({ width = 800, height = 600 }) => {
         const centroid = pathGenerator.centroid(d);
         return centroid[1];
       })
-      .text((d) => d.properties?.name)
+      .text((d) => toNormalCase(d.properties?.name))
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "central")
-      .attr("font-size", "9px")
-      .attr("font-family", "Arial, sans-serif")
-      .attr("fill", "#333")
-      .style("pointer-events", "none");
+      .attr("font-size", "9px");
   }, [geoData, regionsData, width, height]);
 
   return (
-    <div style={{ position: "relative" }}>
-      <svg
-        ref={svgRef}
-        width={width}
-        height={height}
-        style={{ backgroundColor: "#a7cee2" }}
-      ></svg>
+    <div className="flex flex-col items-center justify-center p-4">
+      <svg ref={svgRef} width={width} height={height}></svg>
       {tooltip.visible && (
         <div
           style={{
@@ -172,7 +180,6 @@ const PelagoniaMap = ({ width = 800, height = 600 }) => {
             padding: "5px 10px",
             borderRadius: "3px",
             fontSize: "12px",
-            pointerEvents: "none",
           }}
         >
           {tooltip.content}

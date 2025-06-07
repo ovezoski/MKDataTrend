@@ -90,94 +90,96 @@ const MacedoniaMap: React.FC<MacedoniaMapProps> = ({
   );
 
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      preserveAspectRatio="xMidYMid meet"
-    >
-      {mapStackLayers}
+    <div className="flex flex-col items-center justify-center p-4">
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        preserveAspectRatio="xMidYMid meet"
+      >
+        {mapStackLayers}
 
-      <path
-        className="country"
-        style={{
-          fill: baseCountryFill,
-          stroke: baseCountryStroke,
-          strokeWidth: mapStrokeWidth,
-        }}
-        d={pathGenerator(geojsonData) || ""}
-      />
+        <path
+          className="country"
+          style={{
+            fill: baseCountryFill,
+            stroke: baseCountryStroke,
+            strokeWidth: mapStrokeWidth,
+          }}
+          d={pathGenerator(geojsonData) || ""}
+        />
 
-      {citiesData.map((city) => {
-        const [x, y] = projection(city.coordinates) || [0, 0];
-        if (x === 0 && y === 0 && city.name !== "Skopje") {
-          console.warn(`Projection failed for city: ${city.name}`);
-          return null;
-        }
+        {citiesData.map((city) => {
+          const [x, y] = projection(city.coordinates) || [0, 0];
+          if (x === 0 && y === 0 && city.name !== "Skopje") {
+            console.warn(`Projection failed for city: ${city.name}`);
+            return null;
+          }
 
-        const totalHeight = columnHeightScale(city.population);
-        const segmentHeight = totalHeight / numberOfSegmentsInStack;
+          const totalHeight = columnHeightScale(city.population);
+          const segmentHeight = totalHeight / numberOfSegmentsInStack;
 
-        return (
-          <g
-            key={city.name}
-            transform={`translate(${x}, ${y})`}
-            className="city-group"
-          >
-            {Array.from({ length: numberOfSegmentsInStack }).map((_, i) => {
-              const segmentBaseY = -(i * segmentHeight);
-              const segmentTopY = -((i + 1) * segmentHeight);
-              return (
-                <React.Fragment key={i}>
-                  <path
-                    className="city-column-side"
-                    style={{
-                      fill: "#dc2626",
-                      stroke: "#c03030",
-                      strokeWidth: "0.5px",
-                    }}
-                    d={`M ${columnWidth / 2},${segmentBaseY} L ${columnWidth / 2},${segmentTopY} L ${columnWidth / 2 + perspectiveDepthX},${segmentTopY + perspectiveDepthY} L ${columnWidth / 2 + perspectiveDepthX},${segmentBaseY + perspectiveDepthY} Z`}
-                  />
-                  <path
-                    className="city-column-front"
-                    style={{
-                      fill: "#ef4444",
-                      stroke: "#c03030",
-                      strokeWidth: "0.5px",
-                    }}
-                    d={`M ${-columnWidth / 2},${segmentBaseY} L ${columnWidth / 2},${segmentBaseY} L ${columnWidth / 2},${segmentTopY} L ${-columnWidth / 2},${segmentTopY} Z`}
-                  />
-                  <path
-                    className="city-column-top"
-                    style={{
-                      fill: "#f87171",
-                      stroke: "#c03030",
-                      strokeWidth: "0.5px",
-                    }}
-                    d={`M ${-columnWidth / 2},${segmentTopY} L ${columnWidth / 2},${segmentTopY} L ${columnWidth / 2 + perspectiveDepthX},${segmentTopY + perspectiveDepthY} L ${-columnWidth / 2 + perspectiveDepthX},${segmentTopY + perspectiveDepthY} Z`}
-                  />
-                </React.Fragment>
-              );
-            })}
-            <text
-              className="city-label"
-              style={{
-                fontSize: "10px",
-                fontWeight: 500,
-                fill: "#1f2937",
-                textAnchor: "middle",
-                paintOrder: "stroke",
-                stroke: "#fff",
-                strokeWidth: "2.5px",
-              }}
-              dy={-totalHeight + perspectiveDepthY - 8}
+          return (
+            <g
+              key={city.name}
+              transform={`translate(${x}, ${y})`}
+              className="city-group"
             >
-              {city.name}
-            </text>
-          </g>
-        );
-      })}
-    </svg>
+              {Array.from({ length: numberOfSegmentsInStack }).map((_, i) => {
+                const segmentBaseY = -(i * segmentHeight);
+                const segmentTopY = -((i + 1) * segmentHeight);
+                return (
+                  <React.Fragment key={i}>
+                    <path
+                      className="city-column-side"
+                      style={{
+                        fill: "#dc2626",
+                        stroke: "#c03030",
+                        strokeWidth: "0.5px",
+                      }}
+                      d={`M ${columnWidth / 2},${segmentBaseY} L ${columnWidth / 2},${segmentTopY} L ${columnWidth / 2 + perspectiveDepthX},${segmentTopY + perspectiveDepthY} L ${columnWidth / 2 + perspectiveDepthX},${segmentBaseY + perspectiveDepthY} Z`}
+                    />
+                    <path
+                      className="city-column-front"
+                      style={{
+                        fill: "#ef4444",
+                        stroke: "#c03030",
+                        strokeWidth: "0.5px",
+                      }}
+                      d={`M ${-columnWidth / 2},${segmentBaseY} L ${columnWidth / 2},${segmentBaseY} L ${columnWidth / 2},${segmentTopY} L ${-columnWidth / 2},${segmentTopY} Z`}
+                    />
+                    <path
+                      className="city-column-top"
+                      style={{
+                        fill: "#f87171",
+                        stroke: "#c03030",
+                        strokeWidth: "0.5px",
+                      }}
+                      d={`M ${-columnWidth / 2},${segmentTopY} L ${columnWidth / 2},${segmentTopY} L ${columnWidth / 2 + perspectiveDepthX},${segmentTopY + perspectiveDepthY} L ${-columnWidth / 2 + perspectiveDepthX},${segmentTopY + perspectiveDepthY} Z`}
+                    />
+                  </React.Fragment>
+                );
+              })}
+              <text
+                className="city-label"
+                style={{
+                  fontSize: "10px",
+                  fontWeight: 500,
+                  fill: "#1f2937",
+                  textAnchor: "middle",
+                  paintOrder: "stroke",
+                  stroke: "#fff",
+                  strokeWidth: "2.5px",
+                }}
+                dy={-totalHeight + perspectiveDepthY - 8}
+              >
+                {city.name}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
   );
 };
 
