@@ -18,6 +18,7 @@ import {
   Vegan,
   Banknote,
   ArrowLeftRight,
+  Plug
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -49,10 +50,15 @@ export default function SidebarNavigation() {
       url: "/salary",
       icon: Banknote,
     },
-        {
+    {
       title: "Commodity Exchange",
       url: "/commodity",
       icon: ArrowLeftRight,
+    },
+    {
+      title: "Electricity Consumption",
+      url: "/electricity",
+      icon: Plug,
     },
     {
       title: "Settings",

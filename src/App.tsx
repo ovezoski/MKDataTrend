@@ -10,6 +10,7 @@ import { SidebarProvider } from "./components/ui/sidebar";
 import { NetoSalary } from "./pages/NetoSalary";
 import Livestock from "./pages/Livestock/Livestock";
 import CommodityExchangeChart from "./pages/CommodityExchange";
+import ElectricityConsumption from "./pages/ElectricityConsumption";
 export function App() {
   return (
     <Router>
@@ -25,6 +26,7 @@ export function App() {
                 <Route path="/livestock" element={<Livestock />} />
                 <Route path="/salary" element={<NetoSalary />} />
                 <Route path="/commodity" element={<CommodityExchangeChart />} />
+                <Route path="electricity" element={<ElectricityConsumption />} />
               </Routes>
             </div>
           </div>
