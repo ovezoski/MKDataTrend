@@ -1,23 +1,45 @@
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import * as d3 from "d3";
+import { AppartmentsDataset, Dimension } from "@/types/appartments";
+
+interface TreemapNode extends d3.HierarchyRectangularNode<unknown> {
+  data: {
+    name: string;
+    value?: number | null;
+    children?: TreemapNodeData[];
+  };
+}
+
+interface TreemapNodeData {
+  name: string;
+  value?: number | null;
+  children?: TreemapNodeData[];
+}
 
 const AppartmentsPage = () => {
-  const svgRef = useRef();
-  const wrapperRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [data, setData] = useState(null);
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const [dimensions, setDimensions] = useState<{
+    width: number;
+    height: number;
+  }>({ width: 0, height: 0 });
+  const [data, setData] = useState<AppartmentsDataset | null>(null);
+  const [selectedYear, setSelectedYear] = useState<string>("2024");
+  const [currentZoomNode, setCurrentZoomNode] = useState<TreemapNode | null>(
+    null,
+  );
+  const [initialRoot, setInitialRoot] = useState<TreemapNode | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/appartments.json");
+        const response: Response = await fetch("/appartments.json");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const jsonData = await response.json();
+        const jsonData: AppartmentsDataset = await response.json();
         setData(jsonData);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error fetching data:", error);
       }
     };
@@ -46,123 +68,245 @@ const AppartmentsPage = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [data]);
 
+  const drawTreemap = useCallback(
+    (node: TreemapNode | null) => {
+      if (
+        !data ||
+        dimensions.width === 0 ||
+        dimensions.height === 0 ||
+        !node ||
+        !svgRef.current
+      ) {
+        return;
+      }
+
+      const svg = d3.select(svgRef.current);
+      svg.selectAll("*").remove();
+
+      const { width, height } = dimensions;
+
+        // d3
+        // .hierarchy(node)
+        // .sum((d: TreemapNodeData) => d.value || 0)
+        // .sort(
+        //   (
+        //     a: d3.HierarchyNode<TreemapNodeData>,
+        //     b: d3.HierarchyNode<TreemapNodeData>,
+        //   ) => (b.value || 0) - (a.value || 0),
+        // ) as TreemapNode;
+
+
+      const treemap = d3
+        .treemap<TreemapNodeData>()
+        .size([width, height])
+        .paddingInner(2)
+        .paddingOuter(4)
+        .round(true);
+
+      treemap(node);
+
+      console.log(node.descendants());
+
+      const color = d3.scaleOrdinal(d3.schemeTableau10);
+
+      const cell = svg
+        .selectAll<SVGGElement, TreemapNode>("g")
+        .data(node.descendants())
+        .join("g")
+        .attr("transform", (d: TreemapNode) => `translate(${d.x0},${d.y0})`)
+        .on("click", (event: MouseEvent, d: TreemapNode) => {
+          
+          console.log("d", d);
+
+          event.stopPropagation();
+          if (d.children && d !== node) {
+            console.log("parent", d);
+            setCurrentZoomNode(d);
+          }
+        });
+
+      cell
+        .append("rect")
+        .attr("width", (d: TreemapNode) => d.x1 - d.x0)
+        .attr("height", (d: TreemapNode) => d.y1 - d.y0)
+        .attr("fill", (d: TreemapNode) => {
+          if (d === node) {
+            return "transparent";
+          }
+          if (initialRoot && d.depth === initialRoot.depth + 1) {
+            return color(d.data.name);
+          } else if (initialRoot && d.depth === initialRoot.depth + 2) {
+            return (
+              d3.color(color(d.parent!.data.name) as any)?.darker(0.5) || "gray"
+            );
+          }
+          return "gray";
+        })
+        .attr("stroke", (d: TreemapNode) => (d === node ? "darkgray" : "none"))
+        .attr("stroke-width", (d: TreemapNode) => (d === node ? 2 : 0))
+        .attr("rx", 5)
+        .attr("ry", 5)
+        .style("cursor", (d: TreemapNode) =>
+          d.children && d !== node ? "pointer" : "default",
+        );
+
+      cell
+        .append("text")
+        .attr("x", 4)
+        .attr("y", 16)
+        .attr("fill", "white")
+        .attr("font-size", "12px")
+        .text((d: TreemapNode) => {
+          const rectWidth = d.x1 - d.x0;
+          let textToDisplay = d.data.name;
+          textToDisplay += " " + d.parent?.data?.name;
+          const textWidth = textToDisplay.length * 6;
+          return rectWidth > textWidth ? textToDisplay : "*";
+        });
+
+      cell
+        .append("text")
+        .attr("x", 4)
+        .attr("y", 32)
+        .attr("fill", "white")
+        .attr("font-size", "10px")
+        .text((d: TreemapNode) => {
+          if (d === node) return "";
+          const rectWidth = d.x1 - d.x0;
+          const textToDisplay =
+            d.data.value !== null && d.data.value !== undefined
+              ? d.data.value.toLocaleString()
+              : "";
+          const textWidth = textToDisplay.length * 6;
+          return rectWidth > textWidth ? textToDisplay : "";
+        });
+
+      if (node !== initialRoot && initialRoot) {
+        svg
+          .append("text")
+          .attr("x", 10)
+          .attr("y", 20)
+          .text("← Назад")
+          .attr("fill", "blue")
+          .style("cursor", "pointer")
+          .on("click", () => {
+            if (node.parent) {
+              setCurrentZoomNode(node.parent as TreemapNode);
+            } else {
+              setCurrentZoomNode(initialRoot);
+            }
+          });
+      }
+    },
+    [data, dimensions, initialRoot],
+  );
+
   useEffect(() => {
     if (!data || dimensions.width === 0 || dimensions.height === 0) {
       return;
     }
 
-    const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove();
-
-    const { width, height } = dimensions;
-
-    const apartmentsDim = data.dimension["Завршени станови"];
-    const yearsDim = data.dimension["Година"];
-    const regionsDim = data.dimension["Регион"];
+    const apartmentsDim: Dimension = data.dimension["Завршени станови"];
+    const yearsDim: Dimension = data.dimension["Година"];
+    const regionsDim: Dimension = data.dimension["Регион"];
 
     const orderedApartmentTypes = Object.keys(apartmentsDim.category.index)
       .sort(
-        (a, b) =>
+        (a: string, b: string) =>
           apartmentsDim.category.index[a] - apartmentsDim.category.index[b],
       )
-      .map((key) => ({ code: key, label: apartmentsDim.category.label[key] }));
+      .map((key: string) => ({
+        code: key,
+        label: apartmentsDim.category.label[key],
+      }));
 
     const orderedYears = Object.keys(yearsDim.category.index)
-      .sort((a, b) => yearsDim.category.index[a] - yearsDim.category.index[b])
-      .map((key) => ({ code: key, label: yearsDim.category.label[key] }));
+      .sort(
+        (a: string, b: string) =>
+          yearsDim.category.index[a] - yearsDim.category.index[b],
+      )
+      .map((key: string) => ({
+        code: key,
+        label: yearsDim.category.label[key],
+      }));
 
     const orderedRegions = Object.keys(regionsDim.category.index)
       .sort(
-        (a, b) => regionsDim.category.index[a] - regionsDim.category.index[b],
+        (a: string, b: string) =>
+          regionsDim.category.index[a] - regionsDim.category.index[b],
       )
-      .map((key) => ({ code: key, label: regionsDim.category.label[key] }));
+      .map((key: string) => ({
+        code: key,
+        label: regionsDim.category.label[key],
+      }));
 
-    const selectedYearData = orderedYears.find((y) => y.label === selectedYear);
+    const selectedYearData = orderedYears.find(
+      (y: { label: string }) => y.label === selectedYear,
+    );
     if (!selectedYearData) return;
 
-    const selectedYearIdx = yearsDim.category.index[selectedYearData.code];
-    const totalApartmentTypeIndex = apartmentsDim.category.index["0"];
+    const selectedYearIdx: number =
+      yearsDim.category.index[selectedYearData.code];
+    const numYears: number = data.size[1];
+    const numRegions: number = data.size[2];
 
-    const rootData = {
-      name: `Завршени станови во ${selectedYearData.label}`,
+    const rootData: TreemapNodeData = {
+      name: `Завршени станови (${selectedYearData.label})`,
       children: [],
     };
 
-    orderedRegions.forEach((regionObj, regionIdx) => {
-      const flatIndex =
-        totalApartmentTypeIndex * (data.size[1] * data.size[2]) +
-        selectedYearIdx * data.size[2] +
-        regionIdx;
-      let value = data.value[flatIndex];
+    orderedRegions.forEach((regionObj: { code: string; label: string }) => {
+      const regionNode: TreemapNodeData = {
+        name: regionObj.label,
+        children: [],
+      };
 
-      if (value === null) {
-        value = 0;
-      }
+      orderedApartmentTypes.forEach(
+        (aptTypeObj: { code: string; label: string }) => {
+          const apartmentTypeIndex: number =
+            apartmentsDim.category.index[aptTypeObj.code];
+          const flatIndex: number =
+            apartmentTypeIndex * (numYears * numRegions) +
+            selectedYearIdx * numRegions +
+            regionsDim.category.index[regionObj.code];
+          let value: number | null = data.value[flatIndex];
 
-      if (value > 0) {
-        rootData.children.push({
-          name: regionObj.label,
-          value: value,
-        });
+          if (value === null) {
+            value = 0;
+          }
+
+          if (value > 0) {
+            regionNode.children!.push({
+              name: aptTypeObj.label,
+              value: value,
+            });
+          }
+        },
+      );
+      if (regionNode.children && regionNode.children.length > 0) {
+        rootData.children!.push(regionNode);
       }
     });
 
-    const root = d3
+    const newRoot = d3
       .hierarchy(rootData)
-      .sum((d) => d.value)
-      .sort((a, b) => b.value - a.value);
+      .sum((d: TreemapNodeData) => d.value || 0)
+      .sort(
+        (
+          a: d3.HierarchyNode<TreemapNodeData>,
+          b: d3.HierarchyNode<TreemapNodeData>,
+        ) => (b.value || 0) - (a.value || 0),
+      ) as TreemapNode;
 
-    const treemap = d3
-      .treemap()
-      .size([width, height])
-      .paddingInner(1)
-      .paddingOuter(3)
-      .round(true);
+    setInitialRoot(newRoot);
+    setCurrentZoomNode(newRoot);
+  }, [data, selectedYear, dimensions]);
 
-    treemap(root);
+  useEffect(() => {
+    drawTreemap(currentZoomNode);
+  }, [currentZoomNode, drawTreemap]);
 
-    const color = d3.scaleOrdinal(d3.schemeTableau10);
-
-    const cell = svg
-      .selectAll("g")
-      .data(root.leaves())
-      .join("g")
-      .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
-
-    cell
-      .append("rect")
-      .attr("width", (d) => d.x1 - d.x0)
-      .attr("height", (d) => d.y1 - d.y0)
-      .attr("fill", (d) => color(d.data.name))
-      .attr("rx", 5)
-      .attr("ry", 5);
-
-    cell
-      .append("text")
-      .attr("x", 4)
-      .attr("y", 16)
-      .attr("fill", "white")
-      .attr("font-size", "12px")
-      .text((d) => {
-        const rectWidth = d.x1 - d.x0;
-        const textWidth = d.data.name.length * 6;
-        return rectWidth > textWidth ? d.data.name : "";
-      });
-
-    cell
-      .append("text")
-      .attr("x", 4)
-      .attr("y", 32)
-      .attr("fill", "white")
-      .attr("font-size", "10px")
-      .text((d) => {
-        const rectWidth = d.x1 - d.x0;
-        const textWidth = d.value.toString().length * 6;
-        return rectWidth > textWidth ? d.value.toLocaleString() : "";
-      });
-  }, [data, dimensions, selectedYear]);
-
-  const handleYearChange = (event) => {
+  const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedYear(event.target.value);
   };
 
@@ -174,9 +318,9 @@ const AppartmentsPage = () => {
     );
   }
 
-  const years = Object.keys(data.dimension["Година"].category.label).map(
-    (key) => data.dimension["Година"].category.label[key],
-  );
+  const years: string[] = Object.keys(
+    data.dimension["Година"].category.label,
+  ).map((key: string) => data.dimension["Година"].category.label[key]);
 
   return (
     <div className="font-inter flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
@@ -196,7 +340,7 @@ const AppartmentsPage = () => {
           value={selectedYear}
           onChange={handleYearChange}
         >
-          {years.map((year) => (
+          {years.map((year: string) => (
             <option key={year} value={year}>
               {year}
             </option>
@@ -210,8 +354,8 @@ const AppartmentsPage = () => {
         <svg ref={svgRef} className="h-full w-full"></svg>
       </div>
       <p className="mt-4 text-sm text-gray-600">
-        Прикажува вкупен број на завршени станови по региони за избраната
-        година.
+        Прикажува завршени станови по региони и број на соби за избраната
+        година. Кликнете на регион за да зумирате.
       </p>
     </div>
   );
