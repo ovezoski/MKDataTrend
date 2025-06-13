@@ -31,20 +31,16 @@ export default function SidebarNavigation() {
       icon: Home,
     },
     {
-      title: "Population",
-      url: "/population",
-      icon: UsersRound,
-    },
-    {
       title: "Livestock",
       url: "/livestock",
       icon: Bird,
     },
     {
-      title: "Pelagonia",
-      url: "/pelagonia",
-      icon: Vegan,
+      title: "Population",
+      url: "/population",
+      icon: UsersRound,
     },
+
     {
       title: "Neto Salary",
       url: "/salary",
@@ -54,6 +50,12 @@ export default function SidebarNavigation() {
       title: "Commodity Exchange",
       url: "/commodity",
       icon: ArrowLeftRight,
+    },
+
+    {
+      title: "Pelagonia",
+      url: "/pelagonia",
+      icon: Vegan,
     },
     {
       title: "Electricity Consumption",
