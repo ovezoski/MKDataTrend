@@ -11,6 +11,7 @@ import { NetoSalary } from "./pages/NetoSalary";
 import Livestock from "./pages/Livestock/Livestock";
 import CommodityExchangeChart from "./pages/CommodityExchange";
 import ElectricityConsumption from "./pages/ElectricityConsumption";
+import WholesaleTreemap from "./pages/WholesaleTreemap";
 export function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ export function App() {
                 <Route path="/salary" element={<NetoSalary />} />
                 <Route path="/commodity" element={<CommodityExchangeChart />} />
                 <Route path="electricity" element={<ElectricityConsumption />} />
+                <Route path="/sale" element={<WholesaleTreemap />} />
               </Routes>
             </div>
           </div>

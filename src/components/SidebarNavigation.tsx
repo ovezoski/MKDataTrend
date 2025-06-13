@@ -18,7 +18,8 @@ import {
   Vegan,
   Banknote,
   ArrowLeftRight,
-  Plug
+  Plug,
+  Package
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -61,6 +62,11 @@ export default function SidebarNavigation() {
       title: "Electricity Consumption",
       url: "/electricity",
       icon: Plug,
+    },
+    {
+      title: "Wholesale Trade",
+      url: "/sale",
+      icon: Package,
     },
     {
       title: "Settings",
