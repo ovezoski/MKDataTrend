@@ -13,6 +13,7 @@ import CommodityExchangeChart from "./pages/CommodityExchange";
 import ElectricityConsumption from "./pages/ElectricityConsumption";
 import WholesaleTreemap from "./pages/WholesaleTreemap";
 import { GenderStatisticsChart } from "./pages/GenderStats";
+import AppartmentsPage from "./pages/AppartmentsPage";
 export function App() {
   return (
     <Router>
@@ -23,12 +24,16 @@ export function App() {
             <div className="">
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/appartments" element={<AppartmentsPage />} />
                 <Route path="/population" element={<MacedoniaMap />} />
                 <Route path="/pelagonia" element={<PelagoniaMap />} />
                 <Route path="/livestock" element={<Livestock />} />
                 <Route path="/salary" element={<NetoSalary />} />
                 <Route path="/commodity" element={<CommodityExchangeChart />} />
-                <Route path="electricity" element={<ElectricityConsumption />} />
+                <Route
+                  path="/electricity"
+                  element={<ElectricityConsumption />}
+                />
                 <Route path="/sale" element={<WholesaleTreemap />} />
                 <Route path="/gender" element={<GenderStatisticsChart />} />
               </Routes>

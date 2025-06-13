@@ -20,7 +20,8 @@ import {
   ArrowLeftRight,
   Plug,
   Package,
-  Users
+  Building,
+  Users,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -41,6 +42,11 @@ export default function SidebarNavigation() {
       title: "Population",
       url: "/population",
       icon: UsersRound,
+    },
+    {
+      title: "Appartments",
+      url: "/appartments",
+      icon: Building,
     },
 
     {
