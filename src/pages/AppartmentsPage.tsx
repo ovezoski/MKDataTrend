@@ -41,8 +41,8 @@ const AppartmentsPage = () => {
     const updateDimensions = () => {
       if (wrapperRef.current) {
         setDimensions({
-          width: wrapperRef.current.offsetWidth,
-          height: wrapperRef.current.offsetHeight,
+          width: wrapperRef.current.offsetWidth - 50,
+          height: wrapperRef.current.offsetHeight - 50,
         });
       }
     };
@@ -77,7 +77,7 @@ const AppartmentsPage = () => {
     const numYears = data.size[1];
     const numRegions = data.size[2];
 
-    const rootData: TreemapNodeData = {
+    const fullRootData: TreemapNodeData = {
       name: `Завршени станови (${selectedYearData.label})`,
       children: orderedRegions
         .map((region) => {
@@ -103,21 +103,16 @@ const AppartmentsPage = () => {
         .filter((child): child is TreemapNodeData => child !== null),
     };
 
-    const hierarchy = d3
-      .hierarchy(rootData)
-      .sum((d) => d.value || 0)
-      .sort((a, b) => (b.value || 0) - (a.value || 0));
+    if (!rootNode || rootNode.data.name !== fullRootData.name) {
+      const initialHierarchy = d3
+        .hierarchy(fullRootData)
+        .sum((d) => d.value || 0)
+        .sort((a, b) => (b.value || 0) - (a.value || 0));
 
-    const newRoot = d3
-      .treemap<TreemapNodeData>()
-      .size([dimensions.width, dimensions.height])
-      .paddingInner(2)
-      .paddingOuter(4)
-      .round(true)(hierarchy) as TreemapNode;
-
-    setRootNode(newRoot);
-    setCurrentView(newRoot);
-  }, [data, selectedYear, dimensions]);
+      setRootNode(initialHierarchy as TreemapNode);
+      setCurrentView(initialHierarchy as TreemapNode);
+    }
+  }, [data, selectedYear, dimensions, rootNode]);
 
   const drawTreemap = useCallback(
     (node: TreemapNode | null) => {
@@ -128,31 +123,37 @@ const AppartmentsPage = () => {
 
       const { width, height } = dimensions;
 
-      const scaleX = width / (node.x1 - node.x0);
-      const scaleY = height / (node.y1 - node.y0);
-      const translateX = -node.x0 * scaleX;
-      const translateY = -node.y0 * scaleY;
+      const newRootForLayout = d3
+        .hierarchy(node.data)
+        .sum((d) => d.value || 0)
+        .sort((a, b) => (b.value || 0) - (a.value || 0));
 
-      const g = svg
-        .append("g")
-        .attr(
-          "transform",
-          `translate(${translateX},${translateY})scale(${scaleX},${scaleY})`,
-        );
+      const treemapLayout = d3
+        .treemap<TreemapNodeData>()
+        .size([width, height])
+        .paddingInner(4)
+        .paddingOuter(10)
+        .paddingTop(40)
+        .round(true);
+
+      const visibleNodes = treemapLayout(newRootForLayout).descendants();
 
       const color = d3.scaleOrdinal(d3.schemeTableau10);
 
-      const cell = g
+      const cell = svg
         .selectAll("g")
-        .data(node.descendants())
+        .data(visibleNodes)
         .join("g")
         .attr("transform", (d) => `translate(${d.x0},${d.y0})`)
         .on("click", (event, d) => {
           event.stopPropagation();
-          if (d.children && d !== currentView) {
-            setCurrentView(d);
-          } else if (d === currentView && d.parent) {
-            setCurrentView(d.parent as TreemapNode);
+          if (d.children && d !== newRootForLayout) {
+            const originalNode = rootNode?.find((n) => n.data === d.data);
+            if (originalNode) {
+              setCurrentView(originalNode);
+            }
+          } else if (d === newRootForLayout && node.parent) {
+            setCurrentView(node.parent as TreemapNode);
           }
         });
 
@@ -163,19 +164,19 @@ const AppartmentsPage = () => {
         .attr("rx", 5)
         .attr("ry", 5)
         .attr("fill", (d) => {
-          if (d === node) return "transparent";
-          if (!d.parent) return "gray";
+          if (d === newRootForLayout) return "transparent";
           const parentColor = color(
-            d.parent === node ? d.data.name : d.parent.data.name,
+            d.parent === newRootForLayout ? d.data.name : d.parent.data.name,
           );
-          return d.parent === node
+
+          return d.parent === newRootForLayout
             ? parentColor
             : d3.color(parentColor)?.darker(0.5) || "gray";
         })
-        .attr("stroke", (d) => (d === node ? "darkgray" : "none"))
-        .attr("stroke-width", (d) => (d === node ? 2 : 0))
+        .attr("stroke", (d) => (d === newRootForLayout ? "darkgray" : "none"))
+        .attr("stroke-width", (d) => (d === newRootForLayout ? 2 : 0))
         .style("cursor", (d) =>
-          d.children && d !== node ? "pointer" : "default",
+          d.children && d !== newRootForLayout ? "pointer" : "default",
         );
 
       const addText = (
@@ -199,19 +200,19 @@ const AppartmentsPage = () => {
       addText(cell, 16, "12px", (d) => {
         const rectWidth = d.x1 - d.x0;
         let text = d.data.name;
-        if (d.parent && d.parent !== node) {
+        if (d.parent && d.parent !== newRootForLayout) {
           text = `${d.parent.data.name} - ${text}`;
         }
         return rectWidth > text.length * 6 ? text : "";
       });
 
       addText(cell, 32, "10px", (d) => {
-        if (d === node || d.value === undefined) return "";
+        if (d === newRootForLayout || d.value === undefined) return "";
         const text = d.value.toLocaleString();
         return d.x1 - d.x0 > text.length * 6 ? text : "";
       });
 
-      if (node !== rootNode) {
+      if (node !== rootNode && node.parent) {
         svg
           .append("text")
           .attr("x", 10)
@@ -219,10 +220,10 @@ const AppartmentsPage = () => {
           .text("← Назад")
           .attr("fill", "blue")
           .style("cursor", "pointer")
-          .on("click", () => setCurrentView(node.parent || rootNode));
+          .on("click", () => setCurrentView(node.parent as TreemapNode));
       }
     },
-    [dimensions, rootNode, currentView],
+    [dimensions, rootNode],
   );
 
   useEffect(() => {
