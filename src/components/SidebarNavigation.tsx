@@ -19,7 +19,8 @@ import {
   Banknote,
   ArrowLeftRight,
   Plug,
-  Package
+  Package,
+  Users
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -67,6 +68,11 @@ export default function SidebarNavigation() {
       title: "Wholesale Trade",
       url: "/sale",
       icon: Package,
+    },
+    {
+      title: "Gender Statistics",
+      url: "/gender",
+      icon: Users,
     },
     {
       title: "Settings",

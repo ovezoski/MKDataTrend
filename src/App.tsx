@@ -12,6 +12,7 @@ import Livestock from "./pages/Livestock/Livestock";
 import CommodityExchangeChart from "./pages/CommodityExchange";
 import ElectricityConsumption from "./pages/ElectricityConsumption";
 import WholesaleTreemap from "./pages/WholesaleTreemap";
+import { GenderStatisticsChart } from "./pages/GenderStats";
 export function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ export function App() {
                 <Route path="/commodity" element={<CommodityExchangeChart />} />
                 <Route path="electricity" element={<ElectricityConsumption />} />
                 <Route path="/sale" element={<WholesaleTreemap />} />
+                <Route path="/gender" element={<GenderStatisticsChart />} />
               </Routes>
             </div>
           </div>
