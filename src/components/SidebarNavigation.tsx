@@ -22,6 +22,7 @@ import {
   Package,
   Building,
   Users,
+  Globe
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -79,6 +80,11 @@ export default function SidebarNavigation() {
       title: "Gender Statistics",
       url: "/gender",
       icon: Users,
+    },
+        {
+      title: "Passenger Crossings",
+      url: "/passenger",
+      icon: Globe,
     },
     {
       title: "Settings",
