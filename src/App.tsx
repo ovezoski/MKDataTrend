@@ -15,6 +15,7 @@ import WholesaleTreemap from "./pages/WholesaleTreemap";
 import { GenderStatisticsChart } from "./pages/GenderStats";
 import AppartmentsPage from "./pages/AppartmentsPage";
 import PassengerCrossingHeatmap from "./pages/PassengerCrossingHeatmap";
+import JobVacanciesDashboard from "./pages/Job Vacancies/JobVacanciesDashboard";
 export function App() {
   return (
     <Router>
@@ -38,6 +39,7 @@ export function App() {
                 <Route path="/sale" element={<WholesaleTreemap />} />
                 <Route path="/gender" element={<GenderStatisticsChart />} />
                 <Route path="/passenger" element={<PassengerCrossingHeatmap />} />
+                <Route path="/job" element={<JobVacanciesDashboard />} />
               </Routes>
             </div>
           </div>
