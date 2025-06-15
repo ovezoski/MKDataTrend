@@ -1,0 +1,90 @@
+[
+  {
+    "Product": "Wheat",
+    "Production": 229309
+  },
+  {
+    "Product": "Maize",
+    "Production": 127884
+  },
+  {
+    "Product": "Rice",
+    "Production": 18608
+  },
+  {
+    "Product": "Sunflower",
+    "Production": 5341
+  },
+  {
+    "Product": "Tobacco",
+    "Production": 24116
+  },
+  {
+    "Product": "Potato",
+    "Production": 199629
+  },
+  {
+    "Product": "Potatoes-interfield",
+    "Production": 1354
+  },
+  {
+    "Product": "Onion",
+    "Production": 69084
+  },
+  {
+    "Product": "Tomatoes",
+    "Production": 115681
+  },
+  {
+    "Product": "Pepper",
+    "Production": 247476
+  },
+  {
+    "Product": "Cucumbers",
+    "Production": 32794
+  },
+  {
+    "Product": "Alfalfa",
+    "Production": 85236
+  },
+  {
+    "Product": "Fodder maize",
+    "Production": 198963
+  },
+  {
+    "Product": "Cherries",
+    "Production": 5537
+  },
+  {
+    "Product": "Sour cherries",
+    "Production": 7857
+  },
+  {
+    "Product": "Apricots",
+    "Production": 4780
+  },
+  {
+    "Product": "Apples",
+    "Production": 127696
+  },
+  {
+    "Product": "Pears",
+    "Production": 8114
+  },
+  {
+    "Product": "Plums",
+    "Production": 28750
+  },
+  {
+    "Product": "Peaches",
+    "Production": 8154
+  },
+  {
+    "Product": "Walnuts",
+    "Production": 5520
+  },
+  {
+    "Product": "Grape",
+    "Production": 205571
+  }
+]

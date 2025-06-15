@@ -13,13 +13,12 @@ import CommodityExchangeChart from "./pages/CommodityExchange";
 import ElectricityConsumption from "./pages/ElectricityConsumption";
 import { GenderStatisticsChart } from "./pages/GenderStats";
 import AppartmentsPage from "./pages/AppartmentsPage";
-<<<<<<< HEAD
 import PassengerCrossingHeatmap from "./pages/PassengerCrossingHeatmap";
 import JobVacanciesDashboard from "./pages/Job Vacancies/JobVacanciesDashboard";
 import WholesaleTreemap from "./pages/WholesaleTreemap";
-=======
-import WholesaleTreemap from "./pages/WholesaleTreemap";
->>>>>>> 5e30d69 (Population map data, visualisations per region, Livestock table)
+import PlantProduction from "./pages/PlantProduction";
+import RegionalCropProduction from "./pages/RegionalCropProduction";
+
 export function App() {
   return (
     <Router>
@@ -27,19 +26,23 @@ export function App() {
         <SidebarProvider>
           <SidebarNavigation />
           <div className="w-full">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/appartments" element={<AppartmentsPage />} />
-                <Route path="/population" element={<MacedoniaMap />} />
-                <Route path="/pelagonia" element={<PelagoniaMap />} />
-                <Route path="/livestock" element={<Livestock />} />
-                <Route path="/salary" element={<NetoSalary />} />
-                <Route path="/commodity" element={<CommodityExchangeChart />} />
-                <Route path="/sale" element={<WholesaleTreemap />} />
-                <Route path="/gender" element={<GenderStatisticsChart />} />
-                <Route path="/passenger" element={<PassengerCrossingHeatmap />} />
-                <Route path="/job" element={<JobVacanciesDashboard />} />
-                <Route path="/electricity" element={<ElectricityConsumption />} />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/appartments" element={<AppartmentsPage />} />
+              <Route path="/population" element={<MacedoniaMap />} />
+              <Route path="/plant" element={<PlantProduction />} />
+              <Route
+                path="/plant-regional"
+                element={<RegionalCropProduction />}
+              />
+              <Route path="/livestock" element={<Livestock />} />
+              <Route path="/salary" element={<NetoSalary />} />
+              <Route path="/commodity" element={<CommodityExchangeChart />} />
+              <Route path="/electricity" element={<ElectricityConsumption />} />
+              <Route path="/sale" element={<WholesaleTreemap />} />
+              <Route path="/gender" element={<GenderStatisticsChart />} />
+              <Route path="/job" element={<JobVacanciesDashboard />} />
+              <Route path="/passenger" element={<PassengerCrossingHeatmap />} />
             </Routes>
           </div>
         </SidebarProvider>

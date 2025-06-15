@@ -1,0 +1,104 @@
+{
+  "year": 2024,
+  "data": [
+    {
+      "region": "Republic of Macedonia",
+      "Wheat": 229309,
+      "Maize": 127884,
+      "Tobacco": 24116,
+      "Potato": 199629,
+      "Onion": 69084,
+      "Tomatoes": 115681,
+      "Pepper": 247476,
+      "Cucumbers": 32794
+    },
+    {
+      "region": "Vardar Region",
+      "Wheat": 19918,
+      "Maize": 2001,
+      "Tobacco": 1064,
+      "Potato": 4550,
+      "Onion": 1867,
+      "Tomatoes": 7738,
+      "Pepper": 7390,
+      "Cucumbers": 1532
+    },
+    {
+      "region": "East Region",
+      "Wheat": 17928,
+      "Maize": 19261,
+      "Tobacco": 443,
+      "Potato": 18462,
+      "Onion": 1634,
+      "Tomatoes": 4708,
+      "Pepper": 4677,
+      "Cucumbers": 1216
+    },
+    {
+      "region": "Southwest Region",
+      "Wheat": 13683,
+      "Maize": 12276,
+      "Tobacco": 20,
+      "Potato": 19585,
+      "Onion": 876,
+      "Tomatoes": 1469,
+      "Pepper": 1715,
+      "Cucumbers": 193
+    },
+    {
+      "region": "Southeast Region",
+      "Wheat": 18922,
+      "Maize": 14637,
+      "Tobacco": 5063,
+      "Potato": 40670,
+      "Onion": 27614,
+      "Tomatoes": 57732,
+      "Pepper": 94259,
+      "Cucumbers": 24388
+    },
+    {
+      "region": "Pelagonia Region",
+      "Wheat": 75317,
+      "Maize": 18766,
+      "Tobacco": 16821,
+      "Potato": 38180,
+      "Onion": 20341,
+      "Tomatoes": 7067,
+      "Pepper": 105537,
+      "Cucumbers": 613
+    },
+    {
+      "region": "Polog Region",
+      "Wheat": 18074,
+      "Maize": 34023,
+      "Tobacco": 0,
+      "Potato": 34649,
+      "Onion": 7175,
+      "Tomatoes": 10359,
+      "Pepper": 10187,
+      "Cucumbers": 396
+    },
+    {
+      "region": "Northeast Region",
+      "Wheat": 39793,
+      "Maize": 7678,
+      "Tobacco": 133,
+      "Potato": 14533,
+      "Onion": 2072,
+      "Tomatoes": 3888,
+      "Pepper": 2941,
+      "Cucumbers": 361
+    },
+    {
+      "region": "Skopje Region",
+      "Wheat": 25676,
+      "Maize": 19242,
+      "Tobacco": 573,
+      "Potato": 29000,
+      "Onion": 7505,
+      "Tomatoes": 22721,
+      "Pepper": 20770,
+      "Cucumbers": 4096
+    }
+  ]
+}

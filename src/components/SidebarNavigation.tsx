@@ -23,7 +23,7 @@ import {
   Building,
   Users,
   Globe,
-  Briefcase
+  Briefcase,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -57,16 +57,21 @@ export default function SidebarNavigation() {
       icon: Banknote,
     },
     {
+      title: "Plant Production",
+      url: "/plant",
+      icon: Vegan,
+    },
+    {
+      title: "Regional Plant Production",
+      url: "/plant-regional",
+      icon: Vegan,
+    },
+    {
       title: "Commodity Exchange",
       url: "/commodity",
       icon: ArrowLeftRight,
     },
 
-    {
-      title: "Pelagonia",
-      url: "/pelagonia",
-      icon: Vegan,
-    },
     {
       title: "Electricity Consumption",
       url: "/electricity",
@@ -91,11 +96,6 @@ export default function SidebarNavigation() {
       title: "Job Vacancies",
       url: "/job",
       icon: Briefcase,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings,
     },
   ];
 
