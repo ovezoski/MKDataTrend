@@ -1,7 +1,7 @@
 export interface LivestockDataRow {
   Regions: string;
   Year: string;
-  "Livestock/Poultry/Bee-hives": string;
+  Livestock: string;
   Value: number;
 }
 
@@ -74,8 +74,7 @@ export const parseJsonStatData = (
         const row: LivestockDataRow = {
           Regions: dimInfo[0].valueLabels[dimInfo[0].values[i0]],
           Year: dimInfo[1].valueLabels[dimInfo[1].values[i1]],
-          "Livestock/Poultry/Bee-hives":
-            dimInfo[2].valueLabels[dimInfo[2].values[i2]],
+          Livestock: dimInfo[2].valueLabels[dimInfo[2].values[i2]],
           Value: rawValues[valueIndex],
         };
         parsedData.push(row);

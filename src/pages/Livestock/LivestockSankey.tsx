@@ -75,10 +75,7 @@ export default function LivestockSankey() {
 
     filteredData.forEach((d) => {
       const regionNode = getOrCreateNode(d.Regions, "region");
-      const livestockNode = getOrCreateNode(
-        d["Livestock/Poultry/Bee-hives"],
-        "livestock",
-      );
+      const livestockNode = getOrCreateNode(d["Livestock"], "livestock");
       const value = d.Value;
 
       if (value > 0) {

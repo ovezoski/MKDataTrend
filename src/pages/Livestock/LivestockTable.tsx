@@ -49,12 +49,12 @@ import GoatIcon from "/src/components/icons/goat.svg?react";
 import ChickenIcon from "/src/components/icons/chicken.svg?react";
 
 const animalIcons = {
-  Sheep: <SheepIcon width="20px" height="20px" />,
-  Cattles: <CattleIcon width="20px" height="20px" />,
-  "Bee-hives": <BeeIcon width="20px" height="20px" />,
-  Pigs: <PigIcon width="20px" height="20px" />,
-  Poultry: <ChickenIcon width="20px" height="20px" />,
-  Goats: <GoatIcon width="20px" height="20px" />,
+  Овци: <SheepIcon width="20px" height="20px" />,
+  Говеда: <CattleIcon width="20px" height="20px" />,
+  "Пчелни Семејства": <BeeIcon width="20px" height="20px" />,
+  Свињи: <PigIcon width="20px" height="20px" />,
+  Живина: <ChickenIcon width="20px" height="20px" />,
+  Кози: <GoatIcon width="20px" height="20px" />,
 };
 
 const SortingIcon = ({ isSorted }: { isSorted: false | "asc" | "desc" }) => {
@@ -83,11 +83,11 @@ export default function LivestockTable() {
       },
 
       {
-        accessorKey: "Livestock/Poultry/Bee-hives",
+        accessorKey: "Livestock",
         header: "Type",
         size: 5,
         cell: ({ row }) => {
-          const animal = row.getValue("Livestock/Poultry/Bee-hives");
+          const animal = row.getValue("Livestock");
           const IconComponent = animalIcons[animal] || (
             <RabbitIcon width="20px" height="20px" />
           );

@@ -18,7 +18,7 @@ interface LivestockTreemapProps {
 }
 
 const MARGIN = { top: 30, right: 10, bottom: 10, left: 10 };
-const LIVESTOCK_KEY = "Livestock/Poultry/Bee-hives";
+const LIVESTOCK_KEY = "Livestock";
 
 export default function LivestockTreemap({
   width = 1160,

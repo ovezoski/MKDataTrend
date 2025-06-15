@@ -16,15 +16,15 @@
             "008": 8
           },
           "label": {
-            "000": "Republic of Macedonia",
-            "001": "Vardar Region",
-            "002": "East Region",
-            "003": "Southwest Region",
-            "004": "Southeast Region",
-            "005": "Pelagonia Region",
-            "006": "Polog Region",
-            "007": "Northeast Region",
-            "008": "Skopje Region"
+            "000": "Македонија Вкупно",
+            "001": "Вардарски р.",
+            "002": "Источен р.",
+            "003": "Југозападен р.",
+            "004": "Југоисточен р.",
+            "005": "Пелагонија",
+            "006": "Полог",
+            "007": "Североисточен р.",
+            "008": "Скопски р."
           }
         },
         "extension": {
@@ -45,8 +45,8 @@
           "show": "value"
         }
       },
-      "Добиток/живина/пчелни семејства": {
-        "label": "Livestock/Poultry/Bee-hives",
+      "Livestock": {
+        "label": "Livestock",
         "category": {
           "index": {
             "01": 0,
@@ -58,27 +58,27 @@
             "07": 6
           },
           "label": {
-            "01": "Horses",
-            "02": "Cattles",
-            "03": "Pigs",
-            "04": "Sheep",
-            "05": "Goats",
-            "06": "Poultry",
-            "07": "Bee-hives"
+            "01": "Коњи",
+            "02": "Говеда",
+            "03": "Свињи",
+            "04": "Овци",
+            "05": "Кози",
+            "06": "Живина",
+            "07": "Пчелни Семејства"
           }
         },
         "extension": {
           "show": "value"
         }
       },
-      "id": ["Регион", "Година", "Добиток/живина/пчелни семејства"],
+      "id": ["Регион", "Година", "Livestock"],
       "size": [9, 1, 7],
       "role": {
         "geo": ["Регион"],
         "time": ["Година"]
       }
     },
-    "label": "Total number of livestock, poultry and bee-hives, by regions and by years by Regions, Year and Livestock/Poultry/Bee-hives",
+    "label": "Вкупен број на добиток по регион, година, тип на добиток",
     "source": "State Statistical Office",
     "updated": "2009-09-29T11:36:00Z",
     "value": [
