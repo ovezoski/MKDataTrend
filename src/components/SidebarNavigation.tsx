@@ -28,6 +28,8 @@ import {
 
 import { Link } from "react-router-dom";
 
+import PersonHoldingSign from "/src/components/graphics/person.svg?react";
+
 export default function SidebarNavigation() {
   const items = [
     {
@@ -101,7 +103,10 @@ export default function SidebarNavigation() {
 
   return (
     <Sidebar variant="floating">
-      <SidebarHeader />
+      <SidebarHeader>
+        <h1 className="text-shadow-lg font-bold">MakStat</h1>
+        <PersonHoldingSign width="150px" height="150px" className="mx-auto" />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>

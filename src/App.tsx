@@ -1,5 +1,4 @@
 import "./App.css";
-import PelagoniaMap from "./pages/PelagoniaMap";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -43,6 +42,10 @@ export function App() {
               <Route path="/gender" element={<GenderStatisticsChart />} />
               <Route path="/job" element={<JobVacanciesDashboard />} />
               <Route path="/passenger" element={<PassengerCrossingHeatmap />} />
+              <Route
+                path="/regional-plant-production"
+                element={<RegionalCropProduction />}
+              />
             </Routes>
           </div>
         </SidebarProvider>
