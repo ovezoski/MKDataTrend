@@ -12,64 +12,18 @@ interface TreemapNodeDatum {
   children?: TreemapNodeDatum[];
 }
 
-const MARGIN = { top: 20, right: 20, bottom: 20, left: 20 };
-const WIDTH = 1160 - MARGIN.left - MARGIN.right;
-const HEIGHT = 450;
-const LIVESTOCK_KEY = "Livestock/Poultry/Bee-hives";
-
-function wrapText(
-  text: d3.Selection<
-    d3.BaseType | SVGTextElement,
-    d3.HierarchyRectLeaf<TreemapNodeDatum>,
-    SVGGElement,
-    unknown
-  >,
-) {
-  text.each(function (d) {
-    const textElement = d3.select(this);
-    const rectWidth = d.x1 - d.x0;
-    const rectHeight = d.y1 - d.y0;
-    const originalText = d.data.name;
-    const padding = 8;
-    const availableWidth = rectWidth - padding;
-    const availableHeight = rectHeight - padding;
-    const fontSize = 10;
-    const lineHeight = 1.2;
-
-    textElement.text(null);
-
-    const words = originalText.split(/\s+/);
-    let line = "";
-    let lineNumber = 0;
-    const maxLines = Math.floor(availableHeight / (fontSize * lineHeight));
-
-    let tspan = textElement.append("tspan").attr("x", 4).attr("y", 14);
-
-    for (let i = 0; i < words.length; i++) {
-      const testLine = line ? `${line} ${words[i]}` : words[i];
-      tspan.text(testLine);
-
-      if (tspan.node()!.getComputedTextLength() > availableWidth && i > 0) {
-        tspan.text(line);
-        if (lineNumber + 1 >= maxLines) {
-          tspan.text(tspan.text() + "...");
-          break;
-        }
-        lineNumber++;
-        line = words[i];
-        tspan = textElement
-          .append("tspan")
-          .attr("x", 4)
-          .attr("dy", `${lineHeight}em`)
-          .text(line);
-      } else {
-        line = testLine;
-      }
-    }
-  });
+interface LivestockTreemapProps {
+  width?: number;
+  height?: number;
 }
 
-export default function LivestockTreemap() {
+const MARGIN = { top: 30, right: 10, bottom: 10, left: 10 };
+const LIVESTOCK_KEY = "Livestock/Poultry/Bee-hives";
+
+export default function LivestockTreemap({
+  width = 1160,
+  height = 550,
+}: LivestockTreemapProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [data, setData] = useState<LivestockDataRow[]>([]);
 
@@ -90,16 +44,19 @@ export default function LivestockTreemap() {
   }, []);
 
   useEffect(() => {
-    if (data.length === 0 || !svgRef.current) return;
+    if (!data.length || !svgRef.current) return;
+
+    const chartWidth = width - MARGIN.left - MARGIN.right;
+    const chartHeight = height - MARGIN.top - MARGIN.bottom;
 
     const groupedData = d3.group(data, (d) => d.Regions);
 
     const rootData: TreemapNodeDatum = {
-      name: "Livestock",
+      name: "Regions",
       children: Array.from(groupedData, ([region, values]) => ({
         name: region,
         children: values.map((d) => ({
-          name: `${d[LIVESTOCK_KEY]} (${d.Year})`,
+          name: d[LIVESTOCK_KEY],
           value: d.Value,
         })),
       })),
@@ -112,51 +69,57 @@ export default function LivestockTreemap() {
 
     d3
       .treemap<TreemapNodeDatum>()
-      .size([WIDTH, HEIGHT])
-      .paddingInner(1)
-      .paddingOuter(6)
+      .size([chartWidth, chartHeight])
+      .paddingInner(2)
+      .paddingOuter(5)
+      .paddingTop(20)
       .round(true)(root);
 
     const svg = d3
       .select(svgRef.current)
-      .attr("width", WIDTH + MARGIN.left + MARGIN.right)
-      .attr("height", HEIGHT + MARGIN.top + MARGIN.bottom);
-
-    svg.html("");
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("width", width)
+      .attr("height", height);
 
     const g = svg
-      .append("g")
+      .selectAll("g")
+      .data([null])
+      .join("g")
       .attr("transform", `translate(${MARGIN.left},${MARGIN.top})`);
 
     const regionColor = d3.scaleOrdinal(
-      Array.from(groupedData.keys()),
+      root.children?.map((d) => d.data.name) ?? [],
       d3.schemeTableau10,
     );
 
-    const regionCells = g
-      .selectAll(".region-cell")
-      .data(root.children!)
+    const regionGroups = g
+      .selectAll(".region-group")
+      .data(root.children ?? [])
       .join("g")
-      .attr("class", "region-cell")
+      .attr("class", "region-group")
       .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
 
-    regionCells
-      .append("rect")
+    regionGroups
+      .selectAll(".region-rect")
+      .data((d) => [d])
+      .join("rect")
+      .attr("class", "region-rect")
       .attr("width", (d) => d.x1 - d.x0)
       .attr("height", (d) => d.y1 - d.y0)
       .attr("fill", (d) => regionColor(d.data.name))
-      .attr("stroke", "#ccc")
-      .attr("stroke-width", 2);
+      .attr("rx", 5);
 
-    regionCells
-      .append("text")
-      .attr("x", 4)
-      .attr("y", 18)
+    regionGroups
+      .selectAll(".region-label")
+      .data((d) => [d])
+      .join("text")
+      .attr("class", "region-label")
+      .attr("x", 5)
+      .attr("y", 15)
       .text((d) => d.data.name)
       .attr("font-size", "14px")
       .attr("font-weight", "bold")
-      .attr("fill", "white")
-      .attr("pointer-events", "none");
+      .attr("fill", "white");
 
     const leafCells = g
       .selectAll(".leaf-cell")
@@ -166,27 +129,52 @@ export default function LivestockTreemap() {
       .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
 
     leafCells
-      .append("rect")
+      .selectAll("rect")
+      .data((d) => [d])
+      .join("rect")
       .attr("width", (d) => d.x1 - d.x0)
       .attr("height", (d) => d.y1 - d.y0)
+      .attr("rx", 3)
       .attr("fill", (d) => {
-        const parentRegion = d.parent?.data.name;
-        const color = regionColor(parentRegion!);
-        return d3.color(color)?.darker(0.8) ?? "#4682B4";
-      })
-      .attr("stroke", "white");
+        const parentName = d.parent?.data.name ?? "";
+        const baseColor = d3.color(regionColor(parentName));
+        return baseColor ? baseColor.darker(0.7) : "#ccc";
+      });
 
     leafCells
-      .append("text")
+      .selectAll("text")
+      .data((d) => [d])
+      .join("text")
+      .attr("x", 4)
+      .attr("y", 14)
       .attr("fill", "white")
-      .attr("pointer-events", "none")
-      .attr("font-size", "10px")
-      .call(wrapText);
+      .attr("font-size", "11px")
+      .each(function (d) {
+        const textNode = d3.select(this);
+        const availableWidth = d.x1 - d.x0 - 8;
+        let text = d.data.name;
+        textNode.text(text);
+        if (this.getComputedTextLength() > availableWidth) {
+          text =
+            text.slice(
+              0,
+              Math.floor(
+                (availableWidth / this.getComputedTextLength()) * text.length,
+              ),
+            ) + "..";
+          textNode.text(text);
+        }
+      });
 
     leafCells
-      .append("title")
-      .text((d) => `${d.data.name}: ${d.data.value?.toLocaleString()}`);
-  }, [data]);
+      .selectAll("title")
+      .data((d) => [d])
+      .join("title")
+      .text(
+        (d) =>
+          `${d.parent?.data.name} - ${d.data.name}: ${d.value?.toLocaleString()}`,
+      );
+  }, [data, width, height]);
 
   return (
     <div className="flex flex-col items-center justify-center p-4">

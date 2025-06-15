@@ -51,3 +51,11 @@ body {
     --sidebar-ring: oklch(0.439 0 0);
   }
 }
+
+.municipality {
+  fill: rgb(225, 241, 247);
+}
+
+.municipality:hover {
+  fill: rgb(114, 206, 243);
+}

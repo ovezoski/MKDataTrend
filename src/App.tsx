@@ -11,11 +11,15 @@ import { NetoSalary } from "./pages/NetoSalary";
 import Livestock from "./pages/Livestock/Livestock";
 import CommodityExchangeChart from "./pages/CommodityExchange";
 import ElectricityConsumption from "./pages/ElectricityConsumption";
-import WholesaleTreemap from "./pages/WholesaleTreemap";
 import { GenderStatisticsChart } from "./pages/GenderStats";
 import AppartmentsPage from "./pages/AppartmentsPage";
+<<<<<<< HEAD
 import PassengerCrossingHeatmap from "./pages/PassengerCrossingHeatmap";
 import JobVacanciesDashboard from "./pages/Job Vacancies/JobVacanciesDashboard";
+import WholesaleTreemap from "./pages/WholesaleTreemap";
+=======
+import WholesaleTreemap from "./pages/WholesaleTreemap";
+>>>>>>> 5e30d69 (Population map data, visualisations per region, Livestock table)
 export function App() {
   return (
     <Router>
@@ -23,7 +27,6 @@ export function App() {
         <SidebarProvider>
           <SidebarNavigation />
           <div className="w-full">
-            <div className="">
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/appartments" element={<AppartmentsPage />} />
@@ -32,16 +35,12 @@ export function App() {
                 <Route path="/livestock" element={<Livestock />} />
                 <Route path="/salary" element={<NetoSalary />} />
                 <Route path="/commodity" element={<CommodityExchangeChart />} />
-                <Route
-                  path="/electricity"
-                  element={<ElectricityConsumption />}
-                />
                 <Route path="/sale" element={<WholesaleTreemap />} />
                 <Route path="/gender" element={<GenderStatisticsChart />} />
                 <Route path="/passenger" element={<PassengerCrossingHeatmap />} />
                 <Route path="/job" element={<JobVacanciesDashboard />} />
-              </Routes>
-            </div>
+                <Route path="/electricity" element={<ElectricityConsumption />} />
+            </Routes>
           </div>
         </SidebarProvider>
       </div>
