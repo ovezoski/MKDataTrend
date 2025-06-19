@@ -225,7 +225,7 @@ const AppartmentsPage = () => {
   const years = Object.values(data.dimension["Година"].category.label);
 
   return (
-    <div className="font-inter flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
       <h1 className="mb-6 text-3xl font-bold text-gray-800">
         Визуелизација на изградени станови
       </h1>

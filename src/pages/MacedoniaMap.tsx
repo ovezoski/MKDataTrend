@@ -30,7 +30,22 @@ interface MacedoniaMapProps {
   height?: number;
 }
 
+const circlePath = (
+  radius: number,
+  centerX: number = 0,
+  centerY: number = 0,
+): string => {
+  const r = radius;
+  const x = centerX;
+  const y = centerY;
+
+  return `M ${x - r}, ${y}
+          a ${r},${r} 0 1,0 ${2 * r},0
+          a ${r},${r} 0 1,0 ${-2 * r},0 Z`;
+};
+
 const spike = (length: number, width: number = 8): string => {
+  return circlePath(length / 3);
   const h = -length;
   const w = width / 2;
   return `M ${-w},0 L 0,${h} L ${w},0 Z`;
@@ -51,9 +66,7 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
   >([]);
   const [loadingGeoJson, setLoadingGeoJson] = useState(true);
   const [loadingPopulation, setLoadingPopulation] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  const baseCountryFill = "#e0f2fe";
   const baseCountryStroke = "#3b82f6";
   const mapStrokeWidth = "1px";
   const labelPadding = 5;
@@ -68,9 +81,8 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
         }
         const data: FeatureCollection = await response.json();
         setGeojsonData(data);
-      } catch (e: any) {
+      } catch (e) {
         console.error("Failed to fetch GeoJSON:", e);
-        setError(`Failed to load map data: ${e.message}`);
       } finally {
         setLoadingGeoJson(false);
       }
@@ -91,7 +103,6 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
         setPopulationData(data);
       } catch (e: any) {
         console.error("Failed to fetch population data:", e);
-        setError(`Failed to load population data: ${e.message}`);
       } finally {
         setLoadingPopulation(false);
       }
@@ -129,21 +140,13 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
 
       const centroid = d3.geoCentroid(feature.geometry as MultiPolygon);
 
-      if (centroid && !isNaN(centroid[0]) && !isNaN(centroid[1])) {
-        processedData.push({
-          name: municipalityName,
-          population: population,
-          feature: feature as Feature<MultiPolygon>,
-          centroid: centroid,
-        });
-      }
+      processedData.push({
+        name: municipalityName,
+        population: population,
+        feature: feature as Feature<MultiPolygon>,
+        centroid: centroid,
+      });
     });
-
-    if (processedData.length === 0 && geojsonData.features.length > 0) {
-      console.warn(
-        "Data processing complete, but no valid municipalities were matched with population data or had valid centroids.",
-      );
-    }
     setVisualisationData(processedData);
   }, [geojsonData, populationData]);
 
@@ -168,22 +171,6 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
     return (
       <div className="flex h-full w-full items-center justify-center text-gray-500">
         Loading map and population data...
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex h-full w-full items-center justify-center text-red-500">
-        Error: {error}
-      </div>
-    );
-  }
-
-  if (!geojsonData || visualisationData.length === 0 || !pathGenerator) {
-    return (
-      <div className="flex h-full w-full items-center justify-center text-gray-500">
-        No map data or processed population data available for visualization.
       </div>
     );
   }
@@ -224,20 +211,14 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
   );
 
   return (
-    <div className="font-inter flex flex-col items-center justify-center rounded-lg bg-gray-50 p-4 shadow-md">
+    <div className="flex min-h-screen flex-col items-center justify-center rounded-lg bg-gray-50 p-4">
       <h2 className="mb-4 text-xl font-bold text-gray-800">
-        Population Map of North Macedonia Municipalities
+        Население По Општини
       </h2>
-      <svg
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
-        preserveAspectRatio="xMidYMid meet"
-        className="rounded-md shadow-inner"
-      >
+      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
         {mapStackLayers}
 
-        <g className="main-map-layer">
+        <g>
           {visualisationData.map((d) => (
             <path
               key={d.name}
@@ -248,7 +229,10 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
                 strokeWidth: mapStrokeWidth,
               }}
             >
-              <title>{d.name}</title>
+              <title>
+                <b>{d.name}</b>
+                <div>({d.population})</div>
+              </title>
             </path>
           ))}
         </g>
@@ -256,10 +240,10 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
         <g
           className="spikes"
           style={{
-            fill: "#ef4444",
+            fill: "#f88",
             fillOpacity: 0.7,
-            stroke: "#b91c1c",
-            strokeWidth: 0.5,
+            stroke: "red",
+            strokeWidth: 1,
           }}
         >
           {visualisationData.map((municipality) => {
@@ -302,12 +286,9 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
                 style={{
                   fontSize: "9px",
                   fontWeight: 600,
-                  fill: "#1f2937",
                   textAnchor: "middle",
                   paintOrder: "stroke",
                   stroke: "white",
-                  strokeWidth: "3px",
-                  strokeLinejoin: "round",
                 }}
               >
                 {municipality.name}

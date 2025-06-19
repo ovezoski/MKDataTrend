@@ -15,7 +15,7 @@
         "NAME_1": "Aerodrom",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.AD",
@@ -62,10 +62,10 @@
         "GID_1": "MKD.2_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Aracinovo",
+        "NAME_1": "Arachinovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.AR",
@@ -106,7 +106,7 @@
           ]
         ]
       },
-      "id": "Aracinovo"
+      "id": "Arachinovo"
     },
     {
       "type": "Feature",
@@ -117,7 +117,7 @@
         "NAME_1": "Berovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.BR",
@@ -250,7 +250,7 @@
         "NAME_1": "Bitola",
         "VARNAME_1": "Bitolia|Monastir",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.TL",
@@ -363,7 +363,7 @@
         "NAME_1": "Bogdanci",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.BG",
@@ -426,7 +426,7 @@
         "NAME_1": "Bogovinje",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.VJ",
@@ -483,7 +483,7 @@
         "NAME_1": "Bosilovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.BS",
@@ -556,7 +556,7 @@
         "NAME_1": "Brvenica",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.BN",
@@ -637,7 +637,7 @@
         "NAME_1": "Butel",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.BU",
@@ -696,10 +696,10 @@
         "GID_1": "MKD.10_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "\u010cair",
+        "NAME_1": "Chair",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.CI",
@@ -725,7 +725,7 @@
           ]
         ]
       },
-      "id": "\u010cair"
+      "id": "Chair"
     },
     {
       "type": "Feature",
@@ -733,10 +733,10 @@
         "GID_1": "MKD.11_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "\u010ca\u0161ka",
+        "NAME_1": "Chashka",
         "VARNAME_1": "Caska",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.CA",
@@ -849,7 +849,7 @@
           ]
         ]
       },
-      "id": "\u010ca\u0161ka"
+      "id": "Chashka"
     },
     {
       "type": "Feature",
@@ -860,7 +860,7 @@
         "NAME_1": "Centar",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.CE",
@@ -897,10 +897,10 @@
         "GID_1": "MKD.13_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Centar\u017eupa",
-        "VARNAME_1": "CentarZupa",
+        "NAME_1": "Centar Zhupa",
+        "VARNAME_1": "Centar Zhupa",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.CZ",
@@ -942,7 +942,7 @@
           ]
         ]
       },
-      "id": "Centar\u017eupa"
+      "id": "Centar Zhupa"
     },
     {
       "type": "Feature",
@@ -950,10 +950,10 @@
         "GID_1": "MKD.14_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "\u010ce\u0161inovo-Oble\u0161evo",
+        "NAME_1": "Cheshinovo Obleshevo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.CH",
@@ -1009,7 +1009,7 @@
           ]
         ]
       },
-      "id": "\u010ce\u0161inovo-Oble\u0161evo"
+      "id": "Cheshinovo Obleshevo"
     },
     {
       "type": "Feature",
@@ -1017,10 +1017,10 @@
         "GID_1": "MKD.15_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "\u010cu\u010derSandevo",
+        "NAME_1": "Chucher Sandevo",
         "VARNAME_1": "CucerSandevo",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.CS",
@@ -1092,7 +1092,7 @@
           ]
         ]
       },
-      "id": "\u010cu\u010derSandevo"
+      "id": "Chucher Sandevo"
     },
     {
       "type": "Feature",
@@ -1103,7 +1103,7 @@
         "NAME_1": "Debar",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.DB",
@@ -1174,9 +1174,9 @@
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
         "NAME_1": "Debarca",
-        "VARNAME_1": "Debartsa",
+        "VARNAME_1": "Debarca",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.DA",
@@ -1253,10 +1253,10 @@
         "GID_1": "MKD.18_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Del\u010devo",
+        "NAME_1": "Delchevo",
         "VARNAME_1": "Delcevo",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.DL",
@@ -1356,7 +1356,7 @@
           ]
         ]
       },
-      "id": "Del\u010devo"
+      "id": "Delchevo"
     },
     {
       "type": "Feature",
@@ -1364,10 +1364,10 @@
         "GID_1": "MKD.19_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "DemirHisar",
-        "VARNAME_1": "Murga\u0161evo",
+        "NAME_1": "Demir Hisar",
+        "VARNAME_1": "Murgashevo",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.DM",
@@ -1440,7 +1440,7 @@
           ]
         ]
       },
-      "id": "DemirHisar"
+      "id": "Demir Hisar"
     },
     {
       "type": "Feature",
@@ -1448,10 +1448,10 @@
         "GID_1": "MKD.20_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "DemirKapija",
+        "NAME_1": "Demir Kapija",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.DK",
@@ -1527,7 +1527,7 @@
           ]
         ]
       },
-      "id": "DemirKapija"
+      "id": "Demir Kapija"
     },
     {
       "type": "Feature",
@@ -1538,7 +1538,7 @@
         "NAME_1": "Dolneni",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.DE",
@@ -1639,10 +1639,10 @@
         "GID_1": "MKD.23_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "GaziBaba",
+        "NAME_1": "Gazi Baba",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.GB",
@@ -1704,7 +1704,7 @@
           ]
         ]
       },
-      "id": "GaziBaba"
+      "id": "Gazi Baba"
     },
     {
       "type": "Feature",
@@ -1715,7 +1715,7 @@
         "NAME_1": "Gevgelija",
         "VARNAME_1": "Djevdjelija",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.GV",
@@ -1813,10 +1813,10 @@
         "GID_1": "MKD.25_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Gjor\u010dePetrov",
-        "VARNAME_1": "GjorcePetrov",
+        "NAME_1": "Gjorche Petrov",
+        "VARNAME_1": "Gjorce Petrov",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.GP",
@@ -1858,7 +1858,7 @@
           ]
         ]
       },
-      "id": "Gjor\u010dePetrov"
+      "id": "GjorchePetrov"
     },
     {
       "type": "Feature",
@@ -1869,7 +1869,7 @@
         "NAME_1": "Gostivar",
         "VARNAME_1": "Kostovo",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.GT",
@@ -1984,7 +1984,7 @@
         "NAME_1": "Gradsko",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.GR",
@@ -2094,7 +2094,7 @@
         "NAME_1": "Ilinden",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.IL",
@@ -2154,10 +2154,10 @@
         "GID_1": "MKD.29_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Jegunovtse",
+        "NAME_1": "Jegunovce",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.JG",
@@ -2237,7 +2237,7 @@
           ]
         ]
       },
-      "id": "Jegunovtse"
+      "id": "Jegunovce"
     },
     {
       "type": "Feature",
@@ -2248,7 +2248,7 @@
         "NAME_1": "Karbinci",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KB",
@@ -2316,10 +2316,10 @@
         "GID_1": "MKD.31_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Karpo\u0161",
+        "NAME_1": "Karposh",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KX",
@@ -2361,7 +2361,7 @@
           ]
         ]
       },
-      "id": "Karpo\u0161"
+      "id": "Karposh"
     },
     {
       "type": "Feature",
@@ -2369,10 +2369,10 @@
         "GID_1": "MKD.32_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Kavadartsi",
+        "NAME_1": "Kavadarci",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.AV",
@@ -2514,7 +2514,7 @@
           ]
         ]
       },
-      "id": "Kavadartsi"
+      "id": "Kavadarci"
     },
     {
       "type": "Feature",
@@ -2522,10 +2522,10 @@
         "GID_1": "MKD.33_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Ki\u010devo",
+        "NAME_1": "Kichevo",
         "VARNAME_1": "Kicevo",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KH",
@@ -2634,7 +2634,7 @@
           ]
         ]
       },
-      "id": "Ki\u010devo"
+      "id": "Kichevo"
     },
     {
       "type": "Feature",
@@ -2645,7 +2645,7 @@
         "NAME_1": "KiselaVoda",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.VD",
@@ -2696,10 +2696,10 @@
         "GID_1": "MKD.35_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Ko\u010dani",
+        "NAME_1": "Kochani",
         "VARNAME_1": "Kocani",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.OC",
@@ -2781,7 +2781,7 @@
           ]
         ]
       },
-      "id": "Ko\u010dani"
+      "id": "Kochani"
     },
     {
       "type": "Feature",
@@ -2789,10 +2789,10 @@
         "GID_1": "MKD.36_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Kon\u010de",
+        "NAME_1": "Konche",
         "VARNAME_1": "Konce",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KN",
@@ -2860,7 +2860,7 @@
           ]
         ]
       },
-      "id": "Kon\u010de"
+      "id": "Konche"
     },
     {
       "type": "Feature",
@@ -2871,7 +2871,7 @@
         "NAME_1": "Kratovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KY",
@@ -2971,10 +2971,10 @@
         "GID_1": "MKD.38_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "KrivaPalanka",
+        "NAME_1": "Kriva Palanka",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KZ",
@@ -3077,10 +3077,10 @@
         "GID_1": "MKD.39_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Krivoga\u0161tani",
+        "NAME_1": "Krivogashtani",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KG",
@@ -3128,7 +3128,7 @@
           ]
         ]
       },
-      "id": "Krivoga\u0161tani"
+      "id": "Krivogashtani"
     },
     {
       "type": "Feature",
@@ -3136,10 +3136,10 @@
         "GID_1": "MKD.40_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Kru\u0161evo",
+        "NAME_1": "Krushevo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.KS",
@@ -3204,7 +3204,7 @@
           ]
         ]
       },
-      "id": "Kru\u0161evo"
+      "id": "Krushevo"
     },
     {
       "type": "Feature",
@@ -3215,7 +3215,7 @@
         "NAME_1": "Kumanovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.UM",
@@ -3407,7 +3407,7 @@
         "NAME_1": "Lipkovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.LI",
@@ -3487,7 +3487,7 @@
         "NAME_1": "Lozovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.LO",
@@ -3564,10 +3564,10 @@
         "GID_1": "MKD.45_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "MakedonskaKamenica",
+        "NAME_1": "Makedonska Kamenica",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.MK",
@@ -3636,7 +3636,7 @@
           ]
         ]
       },
-      "id": "MakedonskaKamenica"
+      "id": "Makedonska Kamenica"
     },
     {
       "type": "Feature",
@@ -3644,10 +3644,10 @@
         "GID_1": "MKD.46_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "MakedonskiBrod",
-        "VARNAME_1": "MakedonskaBrod",
+        "NAME_1": "Makedonski Brod",
+        "VARNAME_1": "Makedonska Brod",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.MD",
@@ -3760,7 +3760,7 @@
           ]
         ]
       },
-      "id": "MakedonskiBrod"
+      "id": "Makedonski Brod"
     },
     {
       "type": "Feature",
@@ -3768,10 +3768,10 @@
         "GID_1": "MKD.47_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "MavrovoandRostu\u0161a",
-        "VARNAME_1": "MavrovoandRostusa",
+        "NAME_1": "Mavrovo i Rostushe",
+        "VARNAME_1": "Mavrovo i Rostushe",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.MR",
@@ -3862,7 +3862,7 @@
           ]
         ]
       },
-      "id": "MavrovoandRostu\u0161a"
+      "id": "Ohrid"
     },
     {
       "type": "Feature",
@@ -3873,7 +3873,7 @@
         "NAME_1": "Mogila",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.MG",
@@ -3960,7 +3960,7 @@
         "NAME_1": "Negotino",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.NG",
@@ -4082,10 +4082,10 @@
         "GID_1": "MKD.50_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Novatsi",
+        "NAME_1": "Novaci",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.NV",
@@ -4174,7 +4174,7 @@
           ]
         ]
       },
-      "id": "Novatsi"
+      "id": "Novaci"
     },
     {
       "type": "Feature",
@@ -4182,10 +4182,10 @@
         "GID_1": "MKD.51_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "NovoSelo",
+        "NAME_1": "Novo Selo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.NS",
@@ -4252,7 +4252,7 @@
           ]
         ]
       },
-      "id": "NovoSelo"
+      "id": "Novo Selo"
     },
     {
       "type": "Feature",
@@ -4261,9 +4261,9 @@
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
         "NAME_1": "Ohrid",
-        "VARNAME_1": "Ochrida|Okhrida",
+        "VARNAME_1": "Ohrid",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.OD",
@@ -4351,10 +4351,10 @@
         "GID_1": "MKD.54_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Peh\u010devo",
+        "NAME_1": "Pehchevo",
         "VARNAME_1": "Phecevo",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.PH",
@@ -4438,7 +4438,7 @@
           ]
         ]
       },
-      "id": "Peh\u010devo"
+      "id": "Pehchevo"
     },
     {
       "type": "Feature",
@@ -4449,7 +4449,7 @@
         "NAME_1": "Petrovec",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.PE",
@@ -4539,7 +4539,7 @@
         "NAME_1": "Plasnica",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.PN",
@@ -4593,7 +4593,7 @@
         "NAME_1": "Prilep",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.PP",
@@ -4742,10 +4742,10 @@
         "GID_1": "MKD.58_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Probi\u0161tip",
+        "NAME_1": "Probishtip",
         "VARNAME_1": "Probistip",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.PT",
@@ -4833,7 +4833,7 @@
           ]
         ]
       },
-      "id": "Probi\u0161tip"
+      "id": "Probishtip"
     },
     {
       "type": "Feature",
@@ -4841,10 +4841,10 @@
         "GID_1": "MKD.59_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Radovi\u0161",
+        "NAME_1": "Radovish",
         "VARNAME_1": "Radovis",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.RV",
@@ -4946,7 +4946,7 @@
           ]
         ]
       },
-      "id": "Radovi\u0161"
+      "id": "Radovish"
     },
     {
       "type": "Feature",
@@ -4955,9 +4955,9 @@
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
         "NAME_1": "Rankovce",
-        "VARNAME_1": "NA",
+        "VARNAME_1": "Rankovce",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.RN",
@@ -5029,7 +5029,7 @@
         "NAME_1": "Resen",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.RE",
@@ -5138,7 +5138,7 @@
         "NAME_1": "Rosoman",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.RM",
@@ -5210,7 +5210,7 @@
         "NAME_1": "Saraj",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.AJ",
@@ -5286,10 +5286,10 @@
         "GID_1": "MKD.64_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Sopi\u0161te",
+        "NAME_1": "Sopishte",
         "VARNAME_1": "Sopiste",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.SS",
@@ -5359,7 +5359,7 @@
           ]
         ]
       },
-      "id": "Sopi\u0161te"
+      "id": "Sopishte"
     },
     {
       "type": "Feature",
@@ -5367,10 +5367,10 @@
         "GID_1": "MKD.65_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "StarDojran",
+        "NAME_1": "Dojran",
         "VARNAME_1": "Dojran",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.SD",
@@ -5421,7 +5421,7 @@
           ]
         ]
       },
-      "id": "StarDojran"
+      "id": "Star Dojran"
     },
     {
       "type": "Feature",
@@ -5429,10 +5429,10 @@
         "GID_1": "MKD.66_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "StaroNagori\u010dane",
-        "VARNAME_1": "StaroNagoricane",
+        "NAME_1": "Staro Nagorichane",
+        "VARNAME_1": "Staro Nagoricane",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.NA",
@@ -5515,7 +5515,7 @@
           ]
         ]
       },
-      "id": "StaroNagori\u010dane"
+      "id": "StaroNagorichane"
     },
     {
       "type": "Feature",
@@ -5523,10 +5523,10 @@
         "GID_1": "MKD.67_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "\u0160tip",
+        "NAME_1": "Shtip",
         "VARNAME_1": "Ishtip|Istibete",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.ST",
@@ -5655,7 +5655,7 @@
           ]
         ]
       },
-      "id": "\u0160tip"
+      "id": "Shtip"
     },
     {
       "type": "Feature",
@@ -5666,7 +5666,7 @@
         "NAME_1": "Struga",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.UG",
@@ -5764,10 +5764,10 @@
         "GID_1": "MKD.69_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Strumitsa",
+        "NAME_1": "Strumica",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.RU",
@@ -5859,7 +5859,7 @@
           ]
         ]
       },
-      "id": "Strumitsa"
+      "id": "Strumica"
     },
     {
       "type": "Feature",
@@ -5867,10 +5867,10 @@
         "GID_1": "MKD.70_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Studeni\u010dani",
+        "NAME_1": "Studenichani",
         "VARNAME_1": "Studenicani",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.SU",
@@ -5970,7 +5970,7 @@
           ]
         ]
       },
-      "id": "Studeni\u010dani"
+      "id": "Studenichani"
     },
     {
       "type": "Feature",
@@ -5978,10 +5978,10 @@
         "GID_1": "MKD.71_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "\u0160utoOrizari",
-        "VARNAME_1": "\u0160utka|Shutka",
+        "NAME_1": "Shuto Orizari",
+        "VARNAME_1": "Shutka|Shutka",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.SO",
@@ -6011,7 +6011,7 @@
           ]
         ]
       },
-      "id": "\u0160utoOrizari"
+      "id": "Shuto Orizari"
     },
     {
       "type": "Feature",
@@ -6019,10 +6019,10 @@
         "GID_1": "MKD.72_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "SvetiNikole",
+        "NAME_1": "Sveti Nikole",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.SL",
@@ -6111,7 +6111,7 @@
           ]
         ]
       },
-      "id": "SvetiNikole"
+      "id": "Sveti Nikole"
     },
     {
       "type": "Feature",
@@ -6122,7 +6122,7 @@
         "NAME_1": "Tearce",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.TR",
@@ -6185,7 +6185,7 @@
         "NAME_1": "Tetovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.ET",
@@ -6261,7 +6261,7 @@
         "NAME_1": "Valandovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.VA",
@@ -6374,7 +6374,7 @@
         "NAME_1": "Vasilevo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.VL",
@@ -6472,7 +6472,7 @@
         "NAME_1": "Veles",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.VE",
@@ -6576,10 +6576,10 @@
         "GID_1": "MKD.78_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Vev\u010dani",
-        "VARNAME_1": "Vevcani",
+        "NAME_1": "Vevchani",
+        "VARNAME_1": "Vevchani",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.VV",
@@ -6614,7 +6614,7 @@
           ]
         ]
       },
-      "id": "Vev\u010dani"
+      "id": "Vevchani"
     },
     {
       "type": "Feature",
@@ -6622,10 +6622,10 @@
         "GID_1": "MKD.79_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Vinitsa",
+        "NAME_1": "Vinica",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.NI",
@@ -6702,7 +6702,7 @@
           ]
         ]
       },
-      "id": "Vinitsa"
+      "id": "Vinica"
     },
     {
       "type": "Feature",
@@ -6710,10 +6710,10 @@
         "GID_1": "MKD.81_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "Vrap\u010di\u0161te",
+        "NAME_1": "Vrapchishte",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.VH",
@@ -6760,7 +6760,7 @@
           ]
         ]
       },
-      "id": "Vrap\u010di\u0161te"
+      "id": "Vrapchishte"
     },
     {
       "type": "Feature",
@@ -6771,7 +6771,7 @@
         "NAME_1": "Zelenikovo",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.ZK",
@@ -6835,10 +6835,10 @@
         "GID_1": "MKD.84_1",
         "GID_0": "MKD",
         "COUNTRY": "NorthMacedonia",
-        "NAME_1": "\u017delino",
+        "NAME_1": "Zhelino",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.ZE",
@@ -6918,7 +6918,7 @@
           ]
         ]
       },
-      "id": "\u017delino"
+      "id": "Zhelino"
     },
     {
       "type": "Feature",
@@ -6929,7 +6929,7 @@
         "NAME_1": "Zrnovci",
         "VARNAME_1": "NA",
         "NL_NAME_1": "NA",
-        "TYPE_1": "Op\u0161tina",
+        "TYPE_1": "Opshtina",
         "ENGTYPE_1": "Municipality",
         "CC_1": "NA",
         "HASC_1": "MK.ZR",
