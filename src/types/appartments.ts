@@ -38,3 +38,18 @@ export interface Dimension {
     };
   };
 }
+
+export interface TreemapNode
+  extends d3.HierarchyRectangularNode<TreemapNodeData> {
+  data: {
+    name: string;
+    value?: number;
+    children?: TreemapNodeData[];
+  };
+}
+
+export interface TreemapNodeData {
+  name: string;
+  value?: number;
+  children?: TreemapNodeData[];
+}

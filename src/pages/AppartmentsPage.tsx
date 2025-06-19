@@ -1,20 +1,11 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import * as d3 from "d3";
-import { AppartmentsDataset, Dimension } from "@/types/appartments";
-
-interface TreemapNode extends d3.HierarchyRectangularNode<TreemapNodeData> {
-  data: {
-    name: string;
-    value?: number;
-    children?: TreemapNodeData[];
-  };
-}
-
-interface TreemapNodeData {
-  name: string;
-  value?: number;
-  children?: TreemapNodeData[];
-}
+import {
+  AppartmentsDataset,
+  Dimension,
+  TreemapNode,
+  TreemapNodeData,
+} from "@/types/appartments";
 
 const AppartmentsPage = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -61,9 +52,9 @@ const AppartmentsPage = () => {
 
     const getOrderedCategory = (dimension: Dimension) =>
       Object.keys(dimension.category.index)
-        .sort(
-          (a, b) => dimension.category.index[a] - dimension.category.index[b],
-        )
+        // .sort(
+        //   (a, b) => dimension.category.index[a] - dimension.category.index[b],
+        // )
         .map((key) => ({ code: key, label: dimension.category.label[key] }));
 
     const orderedApartmentTypes = getOrderedCategory(apartmentsDim);
@@ -79,35 +70,32 @@ const AppartmentsPage = () => {
 
     const fullRootData: TreemapNodeData = {
       name: `Завршени станови (${selectedYearData.label})`,
-      children: orderedRegions
-        .map((region) => {
-          const regionNode: TreemapNodeData = {
-            name: region.label,
-            children: orderedApartmentTypes
-              .map((aptType) => {
-                const aptTypeIndex = apartmentsDim.category.index[aptType.code];
-                const regionIndex = regionsDim.category.index[region.code];
-                const flatIndex =
-                  aptTypeIndex * (numYears * numRegions) +
-                  selectedYearIdx * numRegions +
-                  regionIndex;
-                const value = data.value[flatIndex] || 0;
-                return value > 0 ? { name: aptType.label, value } : null;
-              })
-              .filter((child): child is TreemapNodeData => child !== null),
-          };
-          return regionNode.children && regionNode.children.length > 0
-            ? regionNode
-            : null;
-        })
-        .filter((child): child is TreemapNodeData => child !== null),
+      children: orderedRegions.map((region) => {
+        const regionNode: TreemapNodeData = {
+          name: region.label,
+          children: orderedApartmentTypes
+            .map((aptType) => {
+              const aptTypeIndex = apartmentsDim.category.index[aptType.code];
+              const regionIndex = regionsDim.category.index[region.code];
+              const flatIndex =
+                aptTypeIndex * (numYears * numRegions) +
+                selectedYearIdx * numRegions +
+                regionIndex;
+              const value = data.value[flatIndex] || 0;
+              return { name: aptType.label, value };
+            })
+            .filter((child) => child.value !== 0),
+        };
+
+        return regionNode;
+      }),
     };
 
     if (!rootNode || rootNode.data.name !== fullRootData.name) {
       const initialHierarchy = d3
         .hierarchy(fullRootData)
-        .sum((d) => d.value || 0)
-        .sort((a, b) => (b.value || 0) - (a.value || 0));
+        .sum((d) => d.value || 0);
+      // .sort((a, b) => (b.value || 0) - (a.value || 0));
 
       setRootNode(initialHierarchy as TreemapNode);
       setCurrentView(initialHierarchy as TreemapNode);
@@ -123,16 +111,14 @@ const AppartmentsPage = () => {
 
       const { width, height } = dimensions;
 
-      const newRootForLayout = d3
-        .hierarchy(node.data)
-        .sum((d) => d.value || 0)
-        .sort((a, b) => (b.value || 0) - (a.value || 0));
+      const newRootForLayout = d3.hierarchy(node.data).sum((d) => d.value || 0);
+      // .sort((a, b) => (b.value || 0) - (a.value || 0));
 
       const treemapLayout = d3
         .treemap<TreemapNodeData>()
         .size([width, height])
-        .paddingInner(4)
-        .paddingOuter(10)
+        .paddingInner(2)
+        .paddingOuter(2)
         .paddingTop(40)
         .round(true);
 
@@ -147,13 +133,9 @@ const AppartmentsPage = () => {
         .attr("transform", (d) => `translate(${d.x0},${d.y0})`)
         .on("click", (event, d) => {
           event.stopPropagation();
-          if (d.children && d !== newRootForLayout) {
-            const originalNode = rootNode?.find((n) => n.data === d.data);
-            if (originalNode) {
-              setCurrentView(originalNode);
-            }
-          } else if (d === newRootForLayout && node.parent) {
-            setCurrentView(node.parent as TreemapNode);
+          const originalNode = rootNode?.find((n) => n.data === d.data);
+          if (d.children && d !== newRootForLayout && originalNode) {
+            setCurrentView(originalNode);
           }
         });
 
@@ -164,17 +146,18 @@ const AppartmentsPage = () => {
         .attr("rx", 5)
         .attr("ry", 5)
         .attr("fill", (d) => {
-          if (d === newRootForLayout) return "transparent";
-          const parentColor = color(
-            d.parent === newRootForLayout ? d.data.name : d.parent.data.name,
-          );
+          if (d === newRootForLayout) {
+            return "transparent";
+          }
+
+          const baseColorKey =
+            d.parent === newRootForLayout ? d.data.name : d.parent.data.name;
+          const baseColor = color(baseColorKey);
 
           return d.parent === newRootForLayout
-            ? parentColor
-            : d3.color(parentColor)?.darker(0.5) || "gray";
+            ? baseColor
+            : d3.color(baseColor)?.darker(0.5) || "gray";
         })
-        .attr("stroke", (d) => (d === newRootForLayout ? "darkgray" : "none"))
-        .attr("stroke-width", (d) => (d === newRootForLayout ? 2 : 0))
         .style("cursor", (d) =>
           d.children && d !== newRootForLayout ? "pointer" : "default",
         );
@@ -191,19 +174,13 @@ const AppartmentsPage = () => {
           .attr("y", y)
           .attr("fill", "white")
           .attr("font-size", fontSize)
-          .text(getText)
-          .style("display", (d) =>
-            d.x1 - d.x0 < 40 || d.y1 - d.y0 < 40 ? "none" : "block",
-          );
+          .text(getText);
       };
 
       addText(cell, 16, "12px", (d) => {
         const rectWidth = d.x1 - d.x0;
-        let text = d.data.name;
-        if (d.parent && d.parent !== newRootForLayout) {
-          text = `${d.parent.data.name} - ${text}`;
-        }
-        return rectWidth > text.length * 6 ? text : "";
+        const text = d.data.name;
+        return rectWidth > text.length * 6 ? text : text.substring(0, 3);
       });
 
       addText(cell, 32, "10px", (d) => {
@@ -221,6 +198,13 @@ const AppartmentsPage = () => {
           .attr("fill", "blue")
           .style("cursor", "pointer")
           .on("click", () => setCurrentView(node.parent as TreemapNode));
+
+        svg
+          .append("text")
+          .style("font-weight", "bold")
+          .attr("x", dimensions.width / 2 - 50)
+          .attr("y", 20)
+          .text(`${node.data.name}  (${node.value})`);
       }
     },
     [dimensions, rootNode],
@@ -243,7 +227,7 @@ const AppartmentsPage = () => {
   return (
     <div className="font-inter flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
       <h1 className="mb-6 text-3xl font-bold text-gray-800">
-        Визуелизација на завршени станови
+        Визуелизација на изградени станови
       </h1>
       <div className="mb-4">
         <label
@@ -253,7 +237,6 @@ const AppartmentsPage = () => {
           Избери Година:
         </label>
         <select
-          id="year-select"
           className="focus:shadow-outline appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
           value={selectedYear}
           onChange={(e) => setSelectedYear(e.target.value)}
