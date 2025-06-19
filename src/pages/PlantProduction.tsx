@@ -73,7 +73,6 @@ const App = () => {
       .style("fill", "#333");
 
     g.append("text")
-      .attr("fill", "#000")
       .attr("transform", "rotate(-90)")
       .attr("y", -margin.left + 20)
       .attr("x", -innerHeight / 2)
@@ -81,7 +80,7 @@ const App = () => {
       .style("text-anchor", "middle")
       .style("font-size", "14px")
       .style("font-weight", "bold")
-      .text("Production (Tonnes)");
+      .text("Производство (Во Метрички Тони)");
 
     g.selectAll(".bar")
       .data(data)
@@ -131,9 +130,7 @@ const App = () => {
       .style("font-size", "20px")
       .style("font-weight", "bold")
       .style("fill", "#2d3748")
-      .text(
-        "Production of Cereals, Industrial Crops, Vegetables, Fruit and Grapes",
-      );
+      .text("Растително Земјоделско Производство");
   }, [data, dimensions]);
 
   return (

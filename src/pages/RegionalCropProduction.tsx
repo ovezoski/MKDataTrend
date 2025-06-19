@@ -154,14 +154,14 @@ const RegionalCropProduction = () => {
       .attr("y", -10)
       .attr("text-anchor", "middle")
       .attr("class", "text-lg font-semibold text-gray-800")
-      .text("Regional Crop Production - 2024");
+      .text("Регионално Растително Производство - 2024");
 
     svg
       .append("text")
       .attr("transform", `translate(-60, ${chartHeight / 2}) rotate(-90)`)
       .attr("text-anchor", "middle")
       .attr("class", "text-sm font-medium text-gray-600")
-      .text("Production (Metric Tons)");
+      .text("Производство (Метрички Тони)");
 
     svg
       .append("text")
@@ -169,24 +169,8 @@ const RegionalCropProduction = () => {
       .attr("y", chartHeight + margin.bottom - 40)
       .attr("text-anchor", "middle")
       .attr("class", "text-sm font-medium text-gray-600")
-      .text("Region");
+      .text("Регион");
   }, [data]);
-
-  if (loading) {
-    return (
-      <div className="font-inter flex h-screen items-center justify-center bg-gray-100">
-        <p className="text-lg text-gray-700">Loading data...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="font-inter flex h-screen items-center justify-center bg-red-100">
-        <p className="text-lg text-red-700">{error}</p>
-      </div>
-    );
-  }
 
   return (
     <div className="font-inter flex min-h-screen flex-col items-center bg-gradient-to-br from-blue-50 to-purple-50 p-6">

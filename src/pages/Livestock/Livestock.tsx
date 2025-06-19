@@ -18,7 +18,9 @@ export default function Livestock() {
 
         <TabsContent value="table">
           <div className="neutral-50 rounded-md border bg-white p-4">
-            <h3 className="text-m mb-2 font-semibold">Livestock Data Table</h3>
+            <h3 className="text-m mb-2 font-semibold">
+              Количина на Добиток По Региони
+            </h3>
             <LivestockTable />
           </div>
         </TabsContent>
@@ -26,7 +28,7 @@ export default function Livestock() {
         <TabsContent value="sankey">
           <div className="rounded-md border bg-white p-4">
             <h3 className="text-m mb-2 font-semibold">
-              Livestock Sankey Diagram
+              Количина на Добиток По Региони
             </h3>
             <LivestockSankey />
           </div>
@@ -35,7 +37,7 @@ export default function Livestock() {
         <TabsContent value="treemap">
           <div className="rounded-md border bg-white p-4">
             <h3 className="text-m mb-2 font-semibold">
-              Livestock Treemap Diagram
+              Количина на Добиток По Региони
             </h3>
             <LivestockTreemap />
           </div>

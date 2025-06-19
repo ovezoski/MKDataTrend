@@ -1,90 +1,90 @@
 [
   {
-    "Product": "Wheat",
+    "Product": "Пченица",
     "Production": 229309
   },
   {
-    "Product": "Maize",
+    "Product": "Пченка",
     "Production": 127884
   },
   {
-    "Product": "Rice",
+    "Product": "Ориз",
     "Production": 18608
   },
   {
-    "Product": "Sunflower",
+    "Product": "Сончоглед",
     "Production": 5341
   },
   {
-    "Product": "Tobacco",
+    "Product": "Тутун",
     "Production": 24116
   },
   {
-    "Product": "Potato",
+    "Product": "Компир",
     "Production": 199629
   },
   {
-    "Product": "Potatoes-interfield",
+    "Product": "Компир-Добиточен",
     "Production": 1354
   },
   {
-    "Product": "Onion",
+    "Product": "Кромид",
     "Production": 69084
   },
   {
-    "Product": "Tomatoes",
+    "Product": "Домати",
     "Production": 115681
   },
   {
-    "Product": "Pepper",
+    "Product": "Пипер",
     "Production": 247476
   },
   {
-    "Product": "Cucumbers",
+    "Product": "Крставици",
     "Production": 32794
   },
   {
-    "Product": "Alfalfa",
+    "Product": "Алфалфа",
     "Production": 85236
   },
   {
-    "Product": "Fodder maize",
+    "Product": "Добиточна Пченка",
     "Production": 198963
   },
   {
-    "Product": "Cherries",
+    "Product": "Цреши",
     "Production": 5537
   },
   {
-    "Product": "Sour cherries",
+    "Product": "Вишни",
     "Production": 7857
   },
   {
-    "Product": "Apricots",
+    "Product": "Кајсии",
     "Production": 4780
   },
   {
-    "Product": "Apples",
+    "Product": "Јаболка",
     "Production": 127696
   },
   {
-    "Product": "Pears",
+    "Product": "Круши",
     "Production": 8114
   },
   {
-    "Product": "Plums",
+    "Product": "Сливи",
     "Production": 28750
   },
   {
-    "Product": "Peaches",
+    "Product": "Праски",
     "Production": 8154
   },
   {
-    "Product": "Walnuts",
+    "Product": "Ореви",
     "Production": 5520
   },
   {
-    "Product": "Grape",
+    "Product": "Грозје",
     "Production": 205571
   }
 ]

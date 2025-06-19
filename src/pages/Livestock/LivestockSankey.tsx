@@ -206,24 +206,6 @@ export default function LivestockSankey() {
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
-      <div className="mb-4">
-        <label htmlFor="year-select" className="mr-2 font-medium">
-          Select Year:
-        </label>
-        <select
-          id="year-select"
-          value={selectedYear || ""}
-          onChange={(e) => setSelectedYear(e.target.value)}
-          className="rounded-md border p-2"
-        >
-          {availableYears.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-      </div>
-
       <div>
         <svg ref={svgRef}></svg>
       </div>

@@ -230,20 +230,18 @@ const MacedoniaSpikeMap: React.FC<MacedoniaMapProps> = ({
               }}
             >
               <title>
-                <b>{d.name}</b>
-                <div>({d.population})</div>
+                <b>{d.name}</b> <div>({d.population})</div>
               </title>
             </path>
           ))}
         </g>
 
         <g
-          className="spikes"
           style={{
             fill: "#f88",
-            fillOpacity: 0.7,
+            fillOpacity: 0.5,
             stroke: "red",
-            strokeWidth: 1,
+            strokeWidth: 0.5,
           }}
         >
           {visualisationData.map((municipality) => {

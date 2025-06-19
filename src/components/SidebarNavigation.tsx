@@ -33,69 +33,68 @@ import PersonHoldingSign from "/src/components/graphics/person.svg?react";
 export default function SidebarNavigation() {
   const items = [
     {
-      title: "Home",
+      title: "Почетна",
       url: "/",
       icon: Home,
     },
     {
-      title: "Livestock",
-      url: "/livestock",
-      icon: Bird,
+      title: "Станови",
+      url: "/appartments",
+      icon: Building,
     },
     {
-      title: "Population",
+      title: "Население",
       url: "/population",
       icon: UsersRound,
     },
     {
-      title: "Appartments",
-      url: "/appartments",
-      icon: Building,
+      title: "Добиток",
+      url: "/livestock",
+      icon: Bird,
     },
-
     {
-      title: "Neto Salary",
+      title: "Нето Плата",
       url: "/salary",
       icon: Banknote,
     },
     {
-      title: "Plant Production",
+      title: "Растително Произ.",
       url: "/plant",
       icon: Vegan,
     },
     {
-      title: "Regional Plant Production",
+      title: "Растително Произ. (Рег)",
       url: "/plant-regional",
       icon: Vegan,
     },
     {
-      title: "Commodity Exchange",
+      title: "Големопродажба",
       url: "/commodity",
       icon: ArrowLeftRight,
     },
 
     {
-      title: "Electricity Consumption",
+      title: "Потрошувачка на Електрична Енергија",
       url: "/electricity",
       icon: Plug,
     },
     {
-      title: "Wholesale Trade",
+      title: "Малопродажба",
       url: "/sale",
       icon: Package,
     },
     {
-      title: "Gender Statistics",
+      title: "Родови Статистики",
       url: "/gender",
       icon: Users,
     },
     {
-      title: "Passenger Crossings",
+      title: "Гранични Премини",
       url: "/passenger",
       icon: Globe,
     },
     {
-      title: "Job Vacancies",
+      title: "Работни Места",
       url: "/job",
       icon: Briefcase,
     },
